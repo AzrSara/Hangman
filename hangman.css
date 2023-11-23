@@ -1,11 +1,10 @@
-
 * {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-    /* border: 1px dotted rgb(255, 0, 195); */
     font-family: "Times New Roman", Times, serif;
 }
+
 body {
     background-color: rgb(97, 175, 186);
 }
@@ -16,17 +15,14 @@ body {
     border-radius: 0.5em;
     box-shadow: 0px 0px 20px #2a2a2a;
     height: 90vh; 
-    /* ändrat här */
 }
 
 .flex-container {
     padding: 2em 2em .5em 2em;
     text-align: center;
-    
 }
 
 h1 {
-    /* ändrat här */
     font-size: 2.3em; 
     padding: 0.7em;
 }
@@ -40,9 +36,6 @@ h1 {
     padding: 0.4em;
     font-size: .8em;
 }
-/* .input-button {
-    margin: 0.5em;
-} */
 
 .name-input {
     width: 9.5em;
@@ -55,7 +48,6 @@ h1 {
 }
 
 .levels {
-    /* margin: 0; */
     padding: 1em;
     display: flex;
     justify-content: center;
@@ -64,7 +56,6 @@ h1 {
 .levels > * {
     margin: 0.5em 0.8em;
     cursor: pointer;
-
 }
 
 .easy {
@@ -82,18 +73,32 @@ h1 {
 .normal[data-pressed], .normal:active,
 .hard[data-pressed], .hard:active,
 .game-starter[data-pressed], .game-starter:active {
-    background: #2a2a2a;
     color: #aaa;
     position: relative;
     top: 0.1em;
     box-shadow: 0 0 0 0.05em black;
 }
+
+.easy[data-pressed], .easy:active {
+    background: rgb(6, 107, 6);
+}
+
+.normal[data-pressed], .normal:active {
+    background: rgb(109, 115, 3);
+}
+
+.hard[data-pressed], .hard:active {
+    background: rgb(112, 3, 3);
+}
+
+.game-starter[data-pressed], .game-starter:active {
+    background: rgb(75, 58, 128);
+}
+
+
 /* KEYBOARD START */
 
 .keyboard {
-    text-align: center;
-    font-size: 1em;
-    font-family: sans-serif;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -103,7 +108,6 @@ h1 {
 }
 
 .keyboard__row {
-    flex-wrap: wrap;
     height: 3em;
     margin: 0.2em;
 }
@@ -121,7 +125,7 @@ h1 {
     height: 100%;
     box-sizing: border-box;
     cursor: pointer;
-    /* går ej att markera element */
+    /* Gör att det ej går att markera element (chrome, safari) */
     -webkit-user-select: none;
     border: 1px solid #444;
     box-shadow: 0 0.2em 0 0.05em #222;
@@ -141,16 +145,6 @@ h1 {
     line-height: 2.8em;
 }
 
-.key--arrow--tall > *,
-.key--arrow > * {
-    font-size: 0.5em;
-    line-height: 3em;
-}
-
-.keyboard > .keyboard__row {
-    text-align: center;
-}
-
 /* KEYBOARD END */
 
 /* GAME-SECTION START */
@@ -159,7 +153,6 @@ h1 {
     justify-content: space-evenly;
     height: 60vh;
 }
-/* GAME-SECTION END */
 
 .space-evenly {
     display: flex;
@@ -171,6 +164,9 @@ h1 {
     text-align: center;
 }
 
+/* GAME-SECTION END */
+
+/* MEDIA QUERYS START */
 @media (max-width: 1400px) {
     .keyboard {
         font-size: 0.75em;
@@ -185,6 +181,7 @@ h1 {
 
     #change-gubbe {
         height: 30vh;
+        width: 30vw;
     }
 
     .keyboard {
@@ -194,9 +191,8 @@ h1 {
     .window {
         height: fit-content;
         margin: 2.7em 6em;
-
     }
-    
+   
     .letters {
         margin: 3.5em 0em;
     }
@@ -210,8 +206,21 @@ h1 {
    .keyboard {
     font-size: .6em;
     width: 60em;
- 
    }
+   #change-gubbe {
+    width: 50vw;
+    height: 20vh;
+   }
+   .h1 {
+    font-size: 1.7em;
+   }
+
+   .name-input,
+.game-starter,
+.levels > * {
+    font-size: .7em;
+}
+
 
 }
 
@@ -223,4 +232,15 @@ h1 {
     .window {
         margin: 2.7em 1em; 
 }
+}
+
+@media (max-width: 500px) {
+    .keyboard {
+        font-size: .46em;
+        width: fit-content;
+    }
+
+    .h1 {
+        font-size: 0.6em;
+       }
 }
