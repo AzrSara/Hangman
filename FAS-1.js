@@ -1,31 +1,36 @@
 import {words} from "./svenska-ord.js"
 
+
+
+// NIVÅ HANDERING START
+
+
 // Hämtar Elements 
 const easyBtn = document.querySelector(".easy")
 const normalBtn = document.querySelector(".normal")
 const hardBtn = document.querySelector(".hard")
 
 //Lista för ord med 15 bokstäver
-const fiveteenLetterWords = []
+const elevenToFifteenLetterWords  = []
 words.forEach( word => {
-    if(word.length === 15){
-        fiveteenLetterWords.push(word)
+    if(word.length >= 11 && word.length <= 15){
+        elevenToFifteenLetterWords .push(word)
     }
 })
 
 //Lista för ord med 10 bokstäver
-const tenLetterWords = []
+const sixToTenLetterWords = []
 words.forEach( word => {
-    if(word.length === 10){
-        tenLetterWords.push(word)
+    if(word.length >= 6 && word.length <= 10){
+        sixToTenLetterWords.push(word)
     }
 })
 
 //Lista för ord med 5 bokstäver
-const fiveLetterWords = []
+const threeToFiveLetterWords = []
 words.forEach( word => {
-    if(word.length === 5){
-        fiveLetterWords.push(word)
+    if(word.length >= 3 && word.length <= 5){
+        threeToFiveLetterWords.push(word)
     }
 })
 
@@ -49,18 +54,30 @@ displayLines(randomWord);
 
 //Easy level
 easyBtn.addEventListener('click', () => {
-    const randomWord = getRandomWord(fiveteenLetterWords)
+    const randomWord = getRandomWord(elevenToFifteenLetterWords)
     displayLines(randomWord)
 } )
 
 //Medium level
 normalBtn.addEventListener('click', () => {
-    const randomWord = getRandomWord(tenLetterWords)
+    const randomWord = getRandomWord(sixToTenLetterWords)
     displayLines(randomWord)
 } )
 
 //Hard level
 hardBtn.addEventListener('click', () => {
-    const randomWord = getRandomWord(fiveLetterWords)
+    const randomWord = getRandomWord(threeToFiveLetterWords)
     displayLines(randomWord)
 } )
+
+
+// NIVÅ HANDERING END
+
+// Tangentbord Knappar
+document.querySelectorAll('.key--letter').forEach(key => {
+    key.addEventListener('click', (event) => {
+        
+        event.target.classList.toggle('key-pressed')
+    })
+})
+
