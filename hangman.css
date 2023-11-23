@@ -1,0 +1,226 @@
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    /* border: 1px dotted rgb(255, 0, 195); */
+    font-family: "Times New Roman", Times, serif;
+}
+body {
+    background-color: rgb(97, 175, 186);
+}
+
+.window {
+    margin: 2.7em 10em;
+    background-color: #fffefe;
+    border-radius: 0.5em;
+    box-shadow: 0px 0px 20px #2a2a2a;
+    height: 90vh; 
+    /* ändrat här */
+}
+
+.flex-container {
+    padding: 2em 2em .5em 2em;
+    text-align: center;
+    
+}
+
+h1 {
+    /* ändrat här */
+    font-size: 2.3em; 
+    padding: 0.7em;
+}
+
+.name-input,
+.game-starter,
+.levels > * {
+    border-radius: 0.5em;
+    font-weight: 600;
+    width: 5em;
+    padding: 0.4em;
+    font-size: .8em;
+}
+/* .input-button {
+    margin: 0.5em;
+} */
+
+.name-input {
+    width: 9.5em;
+}
+.game-starter {
+    width: 7em;
+    margin-left: 1em;
+    background-color: rgb(146, 131, 197);
+    cursor: pointer;
+}
+
+.levels {
+    /* margin: 0; */
+    padding: 1em;
+    display: flex;
+    justify-content: center;
+}
+
+.levels > * {
+    margin: 0.5em 0.8em;
+    cursor: pointer;
+
+}
+
+.easy {
+    background-color: rgb(53, 168, 53);
+}
+
+.normal {
+    background-color: rgb(226, 226, 32);
+}
+
+.hard {
+    background-color: rgb(208, 58, 58);
+}
+.easy[data-pressed], .easy:active,
+.normal[data-pressed], .normal:active,
+.hard[data-pressed], .hard:active,
+.game-starter[data-pressed], .game-starter:active {
+    background: #2a2a2a;
+    color: #aaa;
+    position: relative;
+    top: 0.1em;
+    box-shadow: 0 0 0 0.05em black;
+}
+/* KEYBOARD START */
+
+.keyboard {
+    text-align: center;
+    font-size: 1em;
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50vw;
+    
+}
+
+.keyboard__row {
+    flex-wrap: wrap;
+    height: 3em;
+    margin: 0.2em;
+}
+
+.keyboard__row > * {
+    position: relative;
+    background: rgb(97, 175, 186);
+    text-align: center;
+    color: black;
+    float: left;
+    border-radius: 0.3em;
+    margin: 0.2em;
+    padding: 0.2em;
+    width: 3.3em;
+    height: 100%;
+    box-sizing: border-box;
+    cursor: pointer;
+    /* går ej att markera element */
+    -webkit-user-select: none;
+    border: 1px solid #444;
+    box-shadow: 0 0.2em 0 0.05em #222;
+    border-bottom-color: #555;
+}
+
+.keyboard__row > div[data-pressed],
+.keyboard__row > div:active {
+    background: #2a2a2a;
+    color: #aaa;
+    position: relative;
+    top: 0.2em;
+    box-shadow: 0 0 0 0.05em black;
+}
+
+.key--letter {
+    line-height: 2.8em;
+}
+
+.key--arrow--tall > *,
+.key--arrow > * {
+    font-size: 0.5em;
+    line-height: 3em;
+}
+
+.keyboard > .keyboard__row {
+    text-align: center;
+}
+
+/* KEYBOARD END */
+
+/* GAME-SECTION START */
+.game-section {
+    display: flex;
+    justify-content: space-evenly;
+    height: 60vh;
+}
+/* GAME-SECTION END */
+
+.space-evenly {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.letters {
+    text-align: center;
+}
+
+@media (max-width: 1400px) {
+    .keyboard {
+        font-size: 0.75em;
+    }
+}
+
+@media (max-width: 1066px) {
+    .game-section{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #change-gubbe {
+        height: 30vh;
+    }
+
+    .keyboard {
+        font-size: 0.6em;
+    }
+    
+    .window {
+        height: fit-content;
+        margin: 2.7em 6em;
+
+    }
+    
+    .letters {
+        margin: 3.5em 0em;
+    }
+}
+
+@media (max-width: 790px) {
+    .window {
+    margin: 2.7em 2em;
+
+    }
+   .keyboard {
+    font-size: .6em;
+    width: 60em;
+ 
+   }
+
+}
+
+@media (max-width: 582px) {
+    .keyboard {
+        font-size: .5em;
+    }
+
+    .window {
+        margin: 2.7em 1em; 
+}
+}
