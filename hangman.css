@@ -95,6 +95,11 @@ h1 {
     background: rgb(75, 58, 128);
 }
 
+#name {
+    align-items: center;
+    font-size: 2em;
+}
+
 
 /* KEYBOARD START */
 
@@ -192,7 +197,11 @@ h1 {
         height: fit-content;
         margin: 2.7em 6em;
     }
-   
+
+    #name {
+        font-size: 1.5em;
+    }
+
     .letters {
         margin: 3.5em 0em;
     }
@@ -215,13 +224,15 @@ h1 {
     font-size: 1.7em;
    }
 
-   .name-input,
-.game-starter,
-.levels > * {
+    .name-input,
+    .game-starter,
+    .levels > * {
     font-size: .7em;
-}
+    }
 
-
+    #name {
+        font-size: 1.2em;
+    }
 }
 
 @media (max-width: 582px) {
@@ -231,6 +242,10 @@ h1 {
 
     .window {
         margin: 2.7em 1em; 
+}
+
+#name {
+    font-size: 1em;
 }
 }
 
