@@ -202,8 +202,8 @@ h1 {
     }
 
     .window {
-        height: fit-content;
         margin: 2.7em 6em;
+        height: fit-content;
     }
 
     .letters {
