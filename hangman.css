@@ -3,7 +3,6 @@
     padding: 0;
     margin: 0;
     font-family: "Times New Roman", Times, serif;
-    /* border: 1px dotted pink; */
 }
 
 body {
@@ -111,7 +110,7 @@ h1 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 50vw;
+    width: fit-content
 }
 
 .keyboard__row {
@@ -178,7 +177,7 @@ h1 {
 /* MEDIA QUERYS START */
 @media (max-width: 1400px) {
     .keyboard {
-        font-size: 0.75em;
+        font-size: 0.8em;
     }
     .letters {
         margin-top: 0.5em;
@@ -203,13 +202,9 @@ h1 {
         width: 30vw;
     }
 
-    .keyboard {
-        font-size: 0.6em;
-    }
-
     .window {
-        height: fit-content;
         margin: 2.7em 6em;
+        height: fit-content;
     }
 
     .letters {
@@ -219,19 +214,16 @@ h1 {
 
 @media (max-width: 790px) {
     .window {
-        margin: 2.7em 2em;
+         margin: 2.7em 2em;
     }
-    .keyboard {
-        font-size: 0.6em;
-        width: 60em;
-    }
-    #change-gubbe {
+
+   #change-gubbe {
         width: 50vw;
         height: 20vh;
-    }
-    .h1 {
+   }
+   .h1 {
         font-size: 1.7em;
-    }
+   }
 
     .name-input,
     .game-starter,
@@ -245,9 +237,9 @@ h1 {
     }
 }
 
-@media (max-width: 582px) {
+@media (max-width: 592px) {
     .keyboard {
-        font-size: 0.5em;
+        font-size: .7em;
     }
 
     .window {
@@ -260,9 +252,8 @@ h1 {
 }
 
 @media (max-width: 500px) {
-    .keyboard {
-        font-size: 0.46em;
-        width: fit-content;
+    .keyboard__row > * {
+        width: 2.1em;
     }
 
     .h1 {
