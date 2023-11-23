@@ -103,7 +103,7 @@ h1 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 50vw;
+    width: fit-content;
     
 }
 
@@ -169,7 +169,7 @@ h1 {
 /* MEDIA QUERYS START */
 @media (max-width: 1400px) {
     .keyboard {
-        font-size: 0.75em;
+        font-size: 0.8em;
     }
 }
 
@@ -185,7 +185,7 @@ h1 {
     }
 
     .keyboard {
-        font-size: 0.6em;
+        /* font-size: 0.6em; */
     }
     
     .window {
@@ -204,8 +204,8 @@ h1 {
 
     }
    .keyboard {
-    font-size: .6em;
-    width: 60em;
+    /* font-size: .6em; */
+    /* width: 60em; */
    }
    #change-gubbe {
     width: 50vw;
@@ -224,9 +224,9 @@ h1 {
 
 }
 
-@media (max-width: 582px) {
+@media (max-width: 592px) {
     .keyboard {
-        font-size: .5em;
+        font-size: .7em;
     }
 
     .window {
@@ -236,8 +236,12 @@ h1 {
 
 @media (max-width: 500px) {
     .keyboard {
-        font-size: .46em;
-        width: fit-content;
+        /* font-size: .5em; */
+        /* width: fit-content; */ 
+    }
+
+    .keyboard__row > * {
+        width: 2.1em;
     }
 
     .h1 {
