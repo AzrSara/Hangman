@@ -1,0 +1,46 @@
+section.vy {
+    text-align: center;
+    background-color: rgb(235, 239, 239);
+    width: 500px;
+    height: 300px;
+    border-radius: 5%;
+    box-shadow: 0px 2px 6px rgb(90, 88, 88);
+}
+
+.vy > section {
+    margin-left: auto;
+}
+
+.vy ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.vy img {
+    width: 15%;
+    margin-top: 30px;
+    border-radius: 25%;
+    box-shadow: 0px 0px 8px gray;
+}
+
+.vy > section button.knapp {
+    margin-left: 50px;
+    border-radius: 20px;
+    font-size: 16px;
+    padding: 5px;
+    box-shadow: 0px 0px 8px gray;
+}
+ 
+
+.hidden {
+    display: none;
+}
+
+.vy:not(.hidden) {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
