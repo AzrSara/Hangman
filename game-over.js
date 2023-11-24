@@ -1,12 +1,12 @@
 // SPELVY
 // Variabler
-const testBtn = document.querySelector('#test-btn');
-const gameView = document.querySelector('.window');
-const gameOver = document.querySelector('#game-over');
-const newGame = document.querySelector('.game-view');
+export const testBtn = document.querySelector('#test-btn');
+export const gameView = document.querySelector('.window');
+export const gameOver = document.querySelector('#game-over');
+export const newGame = document.querySelector('.game-view');
 
 // Skapar en funktion där spelvyn tas bort och game over vyn tas fram när man klickar på en knapp
-function changeView() {
+export function changeView() {
 
     gameView.style.display = 'none'
     gameOver.style.display = 'block'
@@ -16,7 +16,7 @@ function changeView() {
 testBtn.addEventListener ('click', changeView);
 
 // Skapar en funktion där gameover vyn tas bort och spelvyn vyn tas fram när man klickar på en knapp
-function changeViewBack() {
+export function changeViewBack() {
 
     gameOver.style.display = 'none'
     gameView.style.display = 'block'

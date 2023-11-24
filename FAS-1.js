@@ -1,4 +1,5 @@
-import {words} from "./svenska-ord.js"
+import {words} from "./svenska-ord.js";
+import {testBtn, gameView, gameOver, newGame, changeView, changeViewBack} from './game-over.js';
 
 
 
@@ -107,3 +108,10 @@ inputElement.addEventListener('keydown', function (event) {
         displayName();
     }
 });
+
+
+// Anropar funktion för att byta vy till game over
+testBtn.addEventListener ('click', changeView);
+
+// Anropar funktionen för att byta vy till spelvyn
+newGame.addEventListener ('click', changeViewBack);
