@@ -138,6 +138,7 @@ h1 {
 }
 
 .keyboard-row > div[data-pressed],
+.key-pressed,
 .keyboard-row > div:active {
     background: #2a2a2a;
     color: #aaa;
