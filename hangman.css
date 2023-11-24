@@ -110,7 +110,7 @@ h1 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: fit-content
+    width: fit-content;
 }
 
 .keyboard-row {
@@ -131,6 +131,7 @@ h1 {
     height: 100%;
     box-sizing: border-box;
     cursor: pointer;
+    /* Gör att det ej går att markera element (chrome, safari) */
     user-select: none;
     border: 1px solid #444;
     box-shadow: 0 0.2em 0 0.05em #222;
@@ -169,6 +170,11 @@ h1 {
 .letters {
     text-align: center;
     font-size: 4em;
+}
+
+#name {
+    align-items: center;
+    font-size: 2em;
 }
 
 /* GAME-SECTION END */
@@ -223,7 +229,7 @@ h1 {
     }
 }
 
-@media (max-width: 1066px) {
+@media (max-width: 1310px) {
     .game-section {
         flex-direction: column;
         align-items: center;
@@ -248,20 +254,24 @@ h1 {
     .letters {
         font-size: 3em;
     }
+
+    #name {
+        font-size: 1.5em;
+    }
 }
 
 @media (max-width: 790px) {
     .window {
-         margin: 2.7em 2em;
+        margin: 2.7em 2em;
     }
 
-   #change-gubbe {
+    #change-gubbe {
         width: 50vw;
         height: 20vh;
-   }
-   .h1 {
+    }
+    .h1 {
         font-size: 1.7em;
-   }
+    }
 
     .name-input,
     .game-starter,
@@ -273,11 +283,15 @@ h1 {
         font-size: 2.5em;
         margin-top: 1em;
     }
+
+    #name {
+        font-size: 1.2em;
+    }
 }
 
 @media (max-width: 592px) {
     .keyboard {
-        font-size: .7em;
+        font-size: 0.7em;
     }
 
     .window {
@@ -286,6 +300,10 @@ h1 {
     .letters {
         font-size: 2em;
         margin-top: 2em;
+    }
+
+    #name {
+        font-size: 1em;
     }
 }
 
