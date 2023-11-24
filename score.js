@@ -1,23 +1,27 @@
-// Selecting elements from the HTML
-const testButton = document.querySelector('#test-button');
-const playAgainButton = document.querySelector('.knapp');
-const scoreViewButton = document.querySelector('.resultat');
-const gameView = document.getElementById('game');
-const scoreView = document.getElementById('vy');
+// SPELVY
+// Variabler
+export const testBtn = document.querySelector('#test-btn');
+export const gameView = document.querySelector('.window');
+export const gameOver = document.querySelector('#game-over');
+export const newGame = document.querySelector('.game-view');
 
-// Function to show the score view and hide the game view
-function showScoreView() {
-    scoreView.style.display = 'block';
-    gameView.style.display = 'none';
+// Skapar en funktion där spelvyn tas bort och game over vyn tas fram när man klickar på en knapp
+export function changeView() {
+
+    gameView.style.display = 'none'
+    gameOver.style.display = 'block'
+
+}
+// Anropar funktionen
+testBtn.addEventListener ('click', changeView);
+
+// Skapar en funktion där gameover vyn tas bort och spelvyn vyn tas fram när man klickar på en knapp
+export function changeViewBack() {
+
+    gameOver.style.display = 'none'
+    gameView.style.display = 'block'
+
 }
 
-// Function to show the game view and hide the score view
-function showGameView() {
-    scoreView.style.display = 'none';
-    gameView.style.display = 'block';
-}
-
-// Adding click event listeners to the buttons
-testButton.addEventListener('click', showScoreView);
-playAgainButton.addEventListener('click', showGameView);
-scoreViewButton.addEventListener('click', showScoreView);
+// Anropar funktionen
+newGame.addEventListener ('click', changeViewBack);
