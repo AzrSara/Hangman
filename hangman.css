@@ -110,15 +110,15 @@ h1 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: fit-content
+    width: fit-content;
 }
 
-.keyboard__row {
+.keyboard-row {
     height: 3em;
     margin: 0.2em;
 }
 
-.keyboard__row > * {
+.keyboard-row > * {
     position: relative;
     background: rgb(97, 175, 186);
     text-align: center;
@@ -132,15 +132,15 @@ h1 {
     box-sizing: border-box;
     cursor: pointer;
     /* Gör att det ej går att markera element (chrome, safari) */
-    -webkit-user-select: none;
+    user-select: none;
     border: 1px solid #444;
     box-shadow: 0 0.2em 0 0.05em #222;
     border-bottom-color: #555;
 }
 
-.keyboard__row > div[data-pressed],
+.keyboard-row > div[data-pressed],
 .key-pressed,
-.keyboard__row > div:active {
+.keyboard-row > div:active {
     background: #2a2a2a;
     color: #aaa;
     position: relative;
@@ -148,7 +148,7 @@ h1 {
     box-shadow: 0 0 0 0.05em black;
 }
 
-.key--letter {
+.key-letter {
     line-height: 2.8em;
 }
 
@@ -214,16 +214,16 @@ h1 {
 
 @media (max-width: 790px) {
     .window {
-         margin: 2.7em 2em;
+        margin: 2.7em 2em;
     }
 
-   #change-gubbe {
+    #change-gubbe {
         width: 50vw;
         height: 20vh;
-   }
-   .h1 {
+    }
+    .h1 {
         font-size: 1.7em;
-   }
+    }
 
     .name-input,
     .game-starter,
@@ -239,7 +239,7 @@ h1 {
 
 @media (max-width: 592px) {
     .keyboard {
-        font-size: .7em;
+        font-size: 0.7em;
     }
 
     .window {
@@ -252,7 +252,7 @@ h1 {
 }
 
 @media (max-width: 500px) {
-    .keyboard__row > * {
+    .keyboard-row > * {
         width: 2.1em;
     }
 

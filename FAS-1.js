@@ -74,7 +74,7 @@ hardBtn.addEventListener('click', () => {
 // NIVÅ HANDERING END
 
 // Tangentbord Knappar
-document.querySelectorAll('.key--letter').forEach(key => {
+document.querySelectorAll('.key-letter').forEach(key => {
     key.addEventListener('click', (event) => {
         
         event.target.classList.toggle('key-pressed')
