@@ -1,9 +1,10 @@
 import {words} from "./svenska-ord.js"
 
 
+//===================//FAS-1 START//==========================================
+
 
 // NIVÅ HANDERING START
-
 
 // Hämtar Elements 
 const easyBtn = document.querySelector(".easy")
@@ -40,47 +41,60 @@ const getRandomWord = (words) => {
     return words[index]
 }
 const randomWord = getRandomWord(words)
+console.log(randomWord);
 
 // Sträcken efter antal bokstäver 
 const wordContainer = document.querySelector(".letters")
-const displayLines = (word) => {
+let guessedLetters = Array(randomWord.length).fill("_ ");
+const displayLines = () => {
     wordContainer.innerHTML = '';
-    for (let i = 0; i < word.length; i++) {
-        wordContainer.innerHTML += '<span class="letter">_ </span>';
-    }
+    guessedLetters.forEach(letter => {
+    wordContainer.innerHTML += `<span class="letters">${letter}</span>`
+    })
 };
 
-displayLines(randomWord);
+// Start game
+let currentWord;
+const startGame = (randomWord) => {
+    currentWord = randomWord
+    console.log("Загаданное слово:", currentWord);
+    guessedLetters = Array(currentWord.length).fill("_ ");
+    displayLines()
+}
+
+// displayLines(randomWord);
 
 //Easy level
 easyBtn.addEventListener('click', () => {
     const randomWord = getRandomWord(elevenToFifteenLetterWords)
-    displayLines(randomWord)
+    startGame(randomWord)
 } )
 
 //Medium level
 normalBtn.addEventListener('click', () => {
     const randomWord = getRandomWord(sixToTenLetterWords)
-    displayLines(randomWord)
+    startGame(randomWord)
 } )
 
 //Hard level
 hardBtn.addEventListener('click', () => {
     const randomWord = getRandomWord(threeToFiveLetterWords)
-    displayLines(randomWord)
+    startGame(randomWord)
 } )
 
 
 // NIVÅ HANDERING END
 
 // Tangentbord Knappar
-document.querySelectorAll('.key-letter').forEach(key => {
+let keyLetters = document.querySelectorAll('.key-letter')
+keyLetters.forEach(key => {
     key.addEventListener('click', (event) => {
         
         event.target.classList.toggle('key-pressed')
     })
 })
 
+//===================//FAS-1 END//==========================================
 
 // skapar funktion för att flytta Namnet över gubben
 function displayName() {
@@ -107,3 +121,42 @@ inputElement.addEventListener('keydown', function (event) {
         displayName();
     }
 });
+
+//===================//FAS-2 START//==========================================
+let ground = document.querySelector("#ground")
+let scaffold = document.querySelector("#scaffold")
+let legs = document.querySelector("#legs")
+let arms = document.querySelector("#arms")
+let body = document.querySelector("#body")
+let head = document.querySelector("#head")
+
+
+//keyLetters från rad 79
+keyLetters.forEach(key => {
+    key.addEventListener('click', () => {
+        const char = key.getAttribute('data-char')
+        showLetter(char)
+    })
+})
+
+const showLetter = (char) => {
+    let wordToUse = currentWord || randomWord
+    let found = false;
+    for (let i = 0; i < wordToUse.length; i++) {
+        if (wordToUse[i].toUpperCase() === char) {
+            guessedLetters[i] = char; // Обновляем массив угаданных букв
+            found = true;
+        }
+    }
+    // Обновляем отображение только если буква найдена
+    if (found) displayLines();
+}
+
+displayLines()
+
+
+
+
+//===================//FAS-2 END//==========================================
+
+
