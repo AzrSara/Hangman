@@ -8,7 +8,7 @@
 body {
     background-color: rgb(97, 175, 186);
 }
-
+/* SPELVY BÖRJAR */
 .window {
     margin: 2.7em 10em;
     background-color: #fffefe;
@@ -172,6 +172,44 @@ h1 {
 }
 
 /* GAME-SECTION END */
+
+
+
+/* GAME OVER VY STARTAR */
+
+#game-over {
+    display: none;
+}
+.gameover-container {
+    margin: 3em auto;
+    background-color: #fffefe;
+    border-radius: 0.5em;
+    box-shadow: 0px 0px 20px #2a2a2a;
+    height: fit-content;
+    width: 40em;
+    padding: 2em;
+}
+
+.gameover-container > h1,
+.gameover-container > h2 {
+    text-align: center;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: center;
+    margin: 1em;
+} 
+
+.btn-container > * {
+    margin: .5em;
+}
+
+
+/* GAME OVER VY SLUTAR */
+
+
+
 
 /* MEDIA QUERYS START */
 @media (max-width: 1400px) {

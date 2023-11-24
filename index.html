@@ -6,6 +6,8 @@
 	<title>Hangman</title>
 	<link rel="stylesheet" href="hangman.css">
 	<script type="module" src="FAS-1.js"></script>
+	<script type="module" src="game-over.js"></script>
+
 </head>
 <body>
 	<section class="window">
@@ -86,12 +88,24 @@
 					</div>
 			
 				</div>
-				<div class="letters">LETTERS</div>
+				<div class="letters"></div>
 			</div>
-		</section>	
-	
-			
-				   
+			<button id="test-btn">gameover vy</button>
+		</section>			   
 	</section>	
+
+	<section id="game-over">
+		<div class="gameover-container">
+			<h1>DU VANN! / DU FÖRLORADE</h1>
+			<h2>Ordet vart:</h2>
+			<h2>Antal gissningar:</h2>
+			<div class="btn-container">
+				<button class="game-view">Starta nytt spel</button>
+				<button class="results">Poängvy</button>
+			</div>
+			<button id="test-btn-back">Spelvy</button>
+		</div>
+	</section>
+
 </body>
 </html>
