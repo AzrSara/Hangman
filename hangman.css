@@ -185,9 +185,10 @@ h1 {
 
 #game-over {
     display: none;
+
 }
 .gameover-container {
-    margin: 3em auto;
+    margin: 9em auto;
     background-color: #fffefe;
     border-radius: 0.5em;
     box-shadow: 0px 0px 20px #2a2a2a;
@@ -198,7 +199,15 @@ h1 {
 
 .gameover-container > h1,
 .gameover-container > h2 {
-    text-align: center;
+    text-align: center;   
+}
+.gameover-container > h1 {
+    font-size: 3em;
+}
+
+.gameover-container > h2 {
+    font-size: 2em;
+    margin: .8em;
 }
 
 .btn-container {
@@ -209,6 +218,18 @@ h1 {
 
 .btn-container > * {
     margin: .5em;
+    background-color: rgb(97, 175, 186);
+    padding: .5em;
+    font-size: 1.5em;
+    border-radius: .5em;
+    cursor: pointer;
+}
+
+.emojis {
+    display: flex;
+    justify-content: center;
+    font-size: 10em;
+    
 }
 
 
@@ -286,6 +307,23 @@ h1 {
 
     #name {
         font-size: 1.2em;
+    }
+
+    .gameover-container {
+        width: 20em;
+        margin: 3em auto;
+    }
+
+    .gameover-container > h1 {
+        font-size: 2.5em;
+     }
+
+    .gameover-container > h2 {
+       font-size: 1.5em;
+    }
+
+    .btn-container > * {
+        font-size: 1em;
     }
 }
 

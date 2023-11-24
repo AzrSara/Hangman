@@ -108,10 +108,3 @@ inputElement.addEventListener('keydown', function (event) {
         displayName();
     }
 });
-
-
-// Anropar funktion för att byta vy till game over
-testBtn.addEventListener ('click', changeView);
-
-// Anropar funktionen för att byta vy till spelvyn
-newGame.addEventListener ('click', changeViewBack);

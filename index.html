@@ -6,7 +6,6 @@
 	<title>Hangman</title>
 	<link rel="stylesheet" href="hangman.css">
 	<script type="module" src="FAS-1.js"></script>
-
 </head>
 <body>
 	<section class="window">
@@ -95,12 +94,18 @@
 
 	<section id="game-over">
 		<div class="gameover-container">
-			<h1>DU VANN! / DU FÖRLORADE</h1>
-			<h2>Ordet vart:</h2>
-			<h2>Antal gissningar:</h2>
+			<h1 class="win-lose"></h1>
+			<h2 class="word-was">Ordet vart:</h2>
+			<h2 class="quantity-guesses">Antal gissningar:</h2>
 			<div class="btn-container">
 				<button class="game-view">Starta nytt spel</button>
 				<button class="results">Poängvy</button>
+			</div>
+			<div class="emojis">
+				<div class="win-emoji">🥳️</div>
+				<audio class="win-sound" src="ta-da-brass-band-soundroll-1-00-04.mp3"></audio>
+				<div class="lose-emoji">😭</div>
+				<audio class="lose-sound" src="flexitone-ding-wobbly-fail-soundroll-1-00-03.mp3"></audio>
 			</div>
 		</div>
 	</section>
