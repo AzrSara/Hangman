@@ -65,15 +65,4 @@ export function changeViewBack() {
 newGame.addEventListener ('click', changeViewBack);
 
 
-// export function getRandomNumber() {
-//     const randomNumber = Math.floor(Math.random() * 10) + 1;
-
-//     if (randomNumber % 2 === 0) {
-//         winLose.append(win);
-//     } else {
-//         winLose.append(lose);
-//     }
-// }
-
-// testBtn.addEventListener ('click', getRandomNumber);
 
