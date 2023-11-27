@@ -241,8 +241,9 @@ const wordWas = document.querySelector('.word-was');
 const quantityGuesses = document.querySelector('.quantity-guesses');
 const winEmoji = document.querySelector('.win-emoji');
 const loseEmoji = document.querySelector('.lose-emoji');
-const winningSound = document.querySelector('.win-sound')
-const losingSound = document.querySelector('.lose-sound')
+const winningSound = document.querySelector('.win-sound');
+const losingSound = document.querySelector('.lose-sound');
+const scoreViewBtn = document.querySelector('.results');
 
 const changeView = () => {
     gameView.style.display = 'none';
@@ -292,6 +293,17 @@ newGame.addEventListener ('click', changeViewBack);
 restartBtn.addEventListener('click', () => {
     location.reload()
 })
+
+// POÄNGVY KNAPPEN
+function changeViewScore() {
+
+    gameOver.style.display = 'none'
+    score.style.display = 'block'
+    
+
+}
+scoreViewBtn.addEventListener ('click', changeViewScore);
+
 //===================//FAS-3AEND//=============================
 //===================//PoängVY START//===============================
 document.addEventListener('DOMContentLoaded', function () {
