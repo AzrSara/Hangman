@@ -34,6 +34,8 @@ words.forEach( word => {
         threeToFiveLetterWords.push(word)
     }
 })
+// Varibel som tar ord från lvl knappar och allmänt
+let wordToUse
 
 // Slumpar ett ord
 const getRandomWord = (words) => {
@@ -41,6 +43,7 @@ const getRandomWord = (words) => {
     return words[index]
 }
 const randomWord = getRandomWord(words)
+wordToUse = randomWord
 console.log(randomWord);
 
 // Sträcken efter antal bokstäver 
@@ -53,10 +56,11 @@ const displayLines = () => {
     })
 };
 
-// Start game
+// Egen variabel för svårihetsgrads ord 
 let currentWord;
 const startGame = (randomWord) => {
     currentWord = randomWord
+    wordToUse = currentWord
     console.log("Загаданное слово:", currentWord);
     guessedLetters = Array(currentWord.length).fill("_ ");
     displayLines()
@@ -90,7 +94,7 @@ let keyLetters = document.querySelectorAll('.key-letter')
 keyLetters.forEach(key => {
     key.addEventListener('click', (event) => {
         
-        event.target.classList.toggle('key-pressed')
+        event.target.classList.add('key-pressed')
     })
 })
 
@@ -130,8 +134,9 @@ let arms = document.querySelector("#arms")
 let body = document.querySelector("#body")
 let head = document.querySelector("#head")
 
+let hangman = [scaffold, legs, arms, body, head ]
 
-//keyLetters från rad 79
+//keyLetters från rad 79; Keyboard blir aktiv nu, data tas från data-char
 keyLetters.forEach(key => {
     key.addEventListener('click', () => {
         const char = key.getAttribute('data-char')
@@ -139,22 +144,45 @@ keyLetters.forEach(key => {
     })
 })
 
+//Visar upp rätt gissade bokstäver 
+
 const showLetter = (char) => {
-    let wordToUse = currentWord || randomWord
-    let found = false;
+    let found = false
     for (let i = 0; i < wordToUse.length; i++) {
         if (wordToUse[i].toUpperCase() === char) {
-            guessedLetters[i] = char; // Обновляем массив угаданных букв
-            found = true;
+            guessedLetters[i] = char
+            found = true
         }
     }
-    // Обновляем отображение только если буква найдена
-    if (found) displayLines();
+    
+    if (found){
+        displayLines()
+    } else {
+        misstake(char)
+    }
+     
 }
 
 displayLines()
 
+// Ritar upp gubbens kroppsdelar om gissar fel 
+let misstakeCount = 0
+const misstake = (char) => {
+    let misstakeFound = true;
+    for (let i = 0; i < wordToUse.length; i++) {
+        if (wordToUse[i].toUpperCase() === char) {
+            misstakeFound = false;
+            break;
+        }
+    }
 
+    if (misstakeFound) {
+        if (misstakeCount < hangman.length) {
+            hangman[misstakeCount].classList.remove("on");
+            misstakeCount++;
+        }
+    }
+};
 
 
 //===================//FAS-2 END//==========================================

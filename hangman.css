@@ -177,6 +177,10 @@ h1 {
     font-size: 2em;
 }
 
+.on {
+    visibility: hidden;
+}
+
 /* GAME-SECTION END */
 
 /* MEDIA QUERYS START */
