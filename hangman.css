@@ -169,12 +169,16 @@ h1 {
 
 .letters {
     text-align: center;
-    font-size: 4em;
+    font-size: 2.5em;
 }
 
 #name {
     align-items: center;
     font-size: 2em;
+}
+
+.on {
+    visibility: hidden;
 }
 
 /* GAME-SECTION END */
