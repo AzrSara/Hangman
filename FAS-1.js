@@ -73,18 +73,21 @@ const startGame = (randomWord) => {
 easyBtn.addEventListener('click', () => {
     const randomWord = getRandomWord(elevenToFifteenLetterWords)
     startGame(randomWord)
+    
 } )
 
 //Medium level
 normalBtn.addEventListener('click', () => {
     const randomWord = getRandomWord(sixToTenLetterWords)
     startGame(randomWord)
+    
 } )
 
 //Hard level
 hardBtn.addEventListener('click', () => {
     const randomWord = getRandomWord(threeToFiveLetterWords)
     startGame(randomWord)
+    
 } )
 
 
@@ -100,7 +103,7 @@ keyLetters.forEach(key => {
 })
 
 //===================//FAS-1 END//==========================================
-
+let levelSelected = false 
 // skapar funktion för att flytta Namnet över gubben
 function displayName() {
     const inputElement = document.querySelector('.name-input');
@@ -118,14 +121,48 @@ const startBtn = document.querySelector('.game-starter')
 const inputElement = document.querySelector('.name-input');
 
 // anropar funktionen vid klick på startknappen
-startBtn.addEventListener('click', displayName);
+const keyboard = document.querySelector(".keyboard")
+startBtn.addEventListener('click', () => {
+    displayName()
+    keyboard.classList.remove("on")
+    wordContainer.classList.remove("on")
+
+});
 
 // Anropar funktionen vid klick på entertagenten
-inputElement.addEventListener('keydown', function (event) {
+inputElement.addEventListener('keydown', function (event)  {
     if (event.key === 'Enter') {
         displayName();
     }
 });
+
+// Börja Spela knaooen är disable innan man fyller namn och trycker på ett av lvl alt
+
+const levelButtons = document.querySelectorAll('.easy, .normal, .hard');
+function startBtnStatus() {
+    if (inputElement.value.trim() && easyBtn || normalBtn || hardBtn) {
+        startBtn.disabled = false;
+    } else {
+        startBtn.disabled = true;
+    }
+}
+
+levelButtons.forEach(button => {
+    button.addEventListener('click', function() {
+        levelSelected = true;
+        startBtnStatus(); 
+    });
+});
+
+//Knappen Börja Spela är disable innan men har skrivit sitt namn
+// inputElement.addEventListener('input', () => {
+// const name = this.value.trim()
+// if (name.length > 0) {
+//     playButton.disabled = false
+// } else {
+//     playButton.disabled = true
+// }
+// })
 
 //===================//FAS-2 START//==========================================
 let ground = document.querySelector("#ground")
@@ -135,13 +172,15 @@ let arms = document.querySelector("#arms")
 let body = document.querySelector("#body")
 let head = document.querySelector("#head")
 
-let hangman = [scaffold, head, body, arms, legs]
+let hangman = [ground, scaffold, head, body, arms, legs]
 
 //keyLetters från rad 79; Keyboard blir aktiv nu, data tas från data-char
+let charCounter = 1
 keyLetters.forEach(key => {
     key.addEventListener('click', () => {
         const char = key.getAttribute('data-char')
         showLetter(char)
+        charCounter++
     })
 })
 
@@ -224,15 +263,19 @@ const checkGameStatus = () => {
         winLose.append(win);
         winEmoji.style.display = 'block'
         winningSound.play();
+        quantityGuesses.innerText = `Antal gissningar:${charCounter}`
         
     } else if(misstakeCount === hangman.length ){
         changeView()
         winLose.append(lose);
         loseEmoji.style.display = 'block'
         losingSound.play()
+        quantityGuesses.innerText = `Antal gissningar:${charCounter}`
     }
 
 }
+//Se antal gissningar
+
 
 
 // Starta nytt spel knappen 
@@ -249,3 +292,43 @@ newGame.addEventListener ('click', changeViewBack);
 restartBtn.addEventListener('click', () => {
     location.reload()
 })
+//===================//FAS-3AEND//=============================
+//===================//PoängVY START//===============================
+document.addEventListener('DOMContentLoaded', function () {
+    // Existerande kod
+    const scoreView = document.querySelector('#score-view');
+    const button1 = document.querySelector('.window');
+    const score = document.querySelector('#score');
+    const newGame = document.querySelector('.game-view');
+    const newGameButton = document.querySelector('.button1');
+  
+    // Skapar en funktion där spelvyn tas bort och score vyn tas fram när man klickar på en knapp
+    function changeView() {
+        button1.style.display = 'none';
+        score.style.display = 'block';
+    }
+  
+    // Anropar funktionen när #score-view klickas
+    scoreView.addEventListener('click', changeView);
+  
+    // Skapar en funktion där score vyn tas bort och spelvyn vyn tas fram när man klickar på en knapp
+    function changeViewBack() {
+        score.style.display = 'none';
+        button1.style.display = 'block';
+    }
+  
+    // Anropar funktionen när .game-view klickas
+    newGame.addEventListener('click', changeViewBack);
+  
+    // Skapar en funktion där poängvyn tas bort och spelvyn tas fram när man klickar på "Starta nytt spel" i poängvyn
+    function startNewGame() {
+        score.style.display = 'none';
+        button1.style.display = 'block';
+    }
+  
+    // Anropar funktionen när .button1 klickas
+    newGameButton.addEventListener('click', startNewGame);
+  });
+//===================//PoängVY END//===============================
+
+//====================START-GAME===================================

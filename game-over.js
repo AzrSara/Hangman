@@ -63,3 +63,5 @@ export function changeViewBack() {
 
 // Anropar funktionen
 newGame.addEventListener ('click', changeViewBack);
+
+
