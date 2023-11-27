@@ -258,26 +258,24 @@ const changeView = () => {
 }
 
 const checkGameStatus = () => {
-    
+  
     if (guessedLetters.join('').toUpperCase() === wordToUse.toUpperCase()) {
         changeView()
         winLose.append(win);
         winEmoji.style.display = 'block'
         winningSound.play();
         quantityGuesses.innerText = `Antal gissningar:${charCounter}`
+        saveScore();
         
-    } else if(misstakeCount === hangman.length ){
+    } else if (misstakeCount === hangman.length ){
         changeView()
         winLose.append(lose);
         loseEmoji.style.display = 'block'
         losingSound.play()
         quantityGuesses.innerText = `Antal gissningar:${charCounter}`
+        saveScore();
     }
-
 }
-//Se antal gissningar
-
-
 
 // Starta nytt spel knappen 
 function changeViewBack() {
@@ -299,6 +297,7 @@ function changeViewScore() {
 
     gameOver.style.display = 'none'
     score.style.display = 'block'
+    displayScores()
     
 
 }
@@ -318,19 +317,11 @@ document.addEventListener('DOMContentLoaded', function () {
     function changeView() {
         button1.style.display = 'none';
         score.style.display = 'block';
+        displayScores()
     }
   
     // Anropar funktionen när #score-view klickas
     scoreView.addEventListener('click', changeView);
-  
-    // Skapar en funktion där score vyn tas bort och spelvyn vyn tas fram när man klickar på en knapp
-    function changeViewBack() {
-        score.style.display = 'none';
-        button1.style.display = 'block';
-    }
-  
-    // Anropar funktionen när .game-view klickas
-    newGame.addEventListener('click', changeViewBack);
   
     // Skapar en funktion där poängvyn tas bort och spelvyn tas fram när man klickar på "Starta nytt spel" i poängvyn
     function startNewGame() {
@@ -341,6 +332,52 @@ document.addEventListener('DOMContentLoaded', function () {
     // Anropar funktionen när .button1 klickas
     newGameButton.addEventListener('click', startNewGame);
   });
+
+  //   SKAPAR FUNKTION FÖR ATT SPARA RESULTAT
+function saveScore() {
+    const scoreList = JSON.parse(localStorage.getItem('hangmanScores')) || [];
+
+    const scoreViewObjects = {
+        playerName: inputElement.value,   
+        wrongGuesses: charCounter, 
+        wordLength: wordToUse.length, 
+        date: new Date().toLocaleString(), 
+        outcome: misstakeCount === hangman.length ? 'Förlust' : 'Vinst', 
+    };
+
+      // Lägg till det nya resultatet i listan
+      scoreList.push(scoreViewObjects);
+
+      // Spara den uppdaterade poänglistan i localStorage
+      localStorage.setItem('hangmanScores', JSON.stringify(scoreList));
+}
+
+// Skapa en funktion för att visa poängen på skärmen
+function displayScores(sortByDate = true) {
+    
+    const scoreList = JSON.parse(localStorage.getItem('hangmanScores')) || [];
+
+    if(sortByDate) {
+        scoreList.sort((a, b) => a.wrongGuesses - b.wrongGuesses);
+    } else {
+        scoreList.sort((a, b) => new Date(b.date) - new Date(a.date));
+    }
+
+    const scoreHTML = scoreList.map(score => `
+        <div class="score-item">
+            <p>${score.playerName}</p>
+            <p>Antal gissningar: ${score.wrongGuesses}</p>
+            <p>Ordets längd: ${score.wordLength}</p>
+            <p>Datum & Tid: ${score.date}</p>
+            <p>Resultat: ${score.outcome}</p>
+        </div>
+    `).join('');
+
+    document.querySelector('.display-score').innerHTML = scoreHTML;
+}
+
+
+
 //===================//PoängVY END//===============================
 
 //====================START-GAME===================================
