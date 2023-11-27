@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-  // Existerande kod
+
   const scoreView = document.querySelector('#score-view');
   const button1 = document.querySelector('.window');
   const score = document.querySelector('#score');
