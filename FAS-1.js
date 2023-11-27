@@ -1,4 +1,5 @@
 import {words} from "./svenska-ord.js"
+// import {testBtn, gameView, gameOver, newGame, changeView, changeViewBack} from './game-over.js';
 
 
 //===================//FAS-1 START//==========================================
@@ -61,7 +62,7 @@ let currentWord;
 const startGame = (randomWord) => {
     currentWord = randomWord
     wordToUse = currentWord
-    console.log("Загаданное слово:", currentWord);
+    console.log("Ordet från lvl knappar:", currentWord);
     guessedLetters = Array(currentWord.length).fill("_ ");
     displayLines()
 }
@@ -134,7 +135,7 @@ let arms = document.querySelector("#arms")
 let body = document.querySelector("#body")
 let head = document.querySelector("#head")
 
-let hangman = [scaffold, legs, arms, body, head ]
+let hangman = [scaffold, head, body, arms, legs]
 
 //keyLetters från rad 79; Keyboard blir aktiv nu, data tas från data-char
 keyLetters.forEach(key => {
@@ -160,7 +161,7 @@ const showLetter = (char) => {
     } else {
         misstake(char)
     }
-     
+    checkGameStatus()  
 }
 
 displayLines()
@@ -182,9 +183,69 @@ const misstake = (char) => {
             misstakeCount++;
         }
     }
+    checkGameStatus()
 };
 
 
 //===================//FAS-2 END//==========================================
+//===================//FAS-3A START//==========================================
+const restartBtn = document.querySelector('#restart-btn');
+const gameView = document.querySelector('.window');
+const gameOver = document.querySelector('#game-over');
+const newGame = document.querySelector('.game-view');
+const winLose = document.querySelector('.win-lose');
+const win = document.createElement('p');
+win.textContent = 'Grattis!';
+const lose = document.createElement('p');
+lose.textContent = 'Tyvärr, du förlorade :(';
+const wordWas = document.querySelector('.word-was');
+const quantityGuesses = document.querySelector('.quantity-guesses');
+const winEmoji = document.querySelector('.win-emoji');
+const loseEmoji = document.querySelector('.lose-emoji');
+const winningSound = document.querySelector('.win-sound')
+const losingSound = document.querySelector('.lose-sound')
+
+const changeView = () => {
+    gameView.style.display = 'none';
+    gameOver.style.display = 'block';
+
+    winLose.innerText = '';
+    winEmoji.style.display = 'none'
+    loseEmoji.style.display = 'none'
+    
+    const slumpatOrd = wordToUse
+    wordWas.textContent = 'Ordet var: ' + slumpatOrd;
+}
+
+const checkGameStatus = () => {
+    
+    if (guessedLetters.join('').toUpperCase() === wordToUse.toUpperCase()) {
+        changeView()
+        winLose.append(win);
+        winEmoji.style.display = 'block'
+        winningSound.play();
+        
+    } else if(misstakeCount === hangman.length ){
+        changeView()
+        winLose.append(lose);
+        loseEmoji.style.display = 'block'
+        losingSound.play()
+    }
+
+}
 
 
+// Starta nytt spel knappen 
+function changeViewBack() {
+
+    gameOver.style.display = 'none'
+    gameView.style.display = 'block'
+    location.reload()
+
+}
+newGame.addEventListener ('click', changeViewBack);
+
+//Starta om Knappen
+restartBtn.addEventListener('click', () => {
+    location.reload()
+})

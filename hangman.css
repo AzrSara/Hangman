@@ -29,6 +29,7 @@ h1 {
 
 .name-input,
 .game-starter,
+#restart-btn,
 .levels > * {
     border-radius: 0.5em;
     font-weight: 600;
@@ -68,6 +69,11 @@ h1 {
 
 .hard {
     background-color: rgb(208, 58, 58);
+}
+
+#restart-btn {
+    width: 5.5em;
+    background-color: rgb(97, 175, 186);
 }
 .easy[data-pressed],
 .easy:active,
@@ -169,7 +175,7 @@ h1 {
 
 .letters {
     text-align: center;
-    font-size: 2.5em;
+    font-size: 1.5em;
 }
 
 #name {
@@ -183,6 +189,59 @@ h1 {
 
 /* GAME-SECTION END */
 
+/* GAME OVER VY STARTAR */
+
+#game-over {
+    display: none;
+}
+
+.gameover-container {
+    margin: 5em auto;
+    background-color: #fffefe;
+    border-radius: 0.5em;
+    box-shadow: 0px 0px 20px #2a2a2a;
+    height: fit-content;
+    width: 40em;
+    padding: 2em;
+}
+
+.gameover-container > h1,
+.gameover-container > h2 {
+    text-align: center;
+}
+.gameover-container > h1 {
+    font-size: 3em;
+}
+
+.gameover-container > h2 {
+    font-size: 2em;
+    margin: 0.8em;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: center;
+    margin: 1em;
+}
+
+.btn-container > * {
+    margin: 0.5em;
+    background-color: rgb(97, 175, 186);
+    padding: 0.5em;
+    font-size: 1.5em;
+    border-radius: 0.5em;
+    cursor: pointer;
+}
+
+.emojis {
+    display: flex;
+    justify-content: center;
+    font-size: 10em;
+    text-shadow: 0 0 15px black;
+}
+
+/* GAME OVER VY SLUTAR */
+
 /* MEDIA QUERYS START */
 @media (max-width: 1400px) {
     .keyboard {
@@ -191,7 +250,7 @@ h1 {
 
     .letters {
         margin-top: 0.5em;
-        font-size: 3.5em;
+        font-size: 2em;
     }
 }
 
@@ -215,10 +274,6 @@ h1 {
     .window {
         margin: 2.7em 6em;
         height: fit-content;
-    }
-
-    .letters {
-        font-size: 3em;
     }
 
     #name {
@@ -246,12 +301,28 @@ h1 {
     }
 
     .letters {
-        font-size: 2.5em;
+        font-size: 1.8em;
         margin-top: 1em;
     }
 
     #name {
         font-size: 1.2em;
+    }
+    .gameover-container {
+        width: 20em;
+        margin: 3em auto;
+    }
+
+    .gameover-container > h1 {
+        font-size: 2.5em;
+    }
+
+    .gameover-container > h2 {
+        font-size: 1.5em;
+    }
+
+    .btn-container > * {
+        font-size: 1em;
     }
 }
 
@@ -264,7 +335,7 @@ h1 {
         margin: 2.7em 1em;
     }
     .letters {
-        font-size: 2em;
+        font-size: 1.6em;
         margin-top: 2em;
     }
 
