@@ -327,6 +327,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function startNewGame() {
         score.style.display = 'none';
         button1.style.display = 'block';
+        location.reload()
     }
   
     // Anropar funktionen när .button1 klickas
