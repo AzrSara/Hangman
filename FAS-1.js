@@ -344,3 +344,34 @@ document.addEventListener('DOMContentLoaded', function () {
 //===================//PoängVY END//===============================
 
 //====================START-GAME===================================
+
+ // Function för att visa score resultat i localStorage "påbörjad"
+ function displayScoreView() {
+    const games = JSON.parse(localStorage.getItem('hangmanGames')) || [];
+    const tableBody = document.querySelector('#scoreTable tbody');
+
+    
+    games.sort((a, b) => {
+        
+        return a.incorrectGuesses - b.incorrectGuesses || new Date(b.dateTime) - new Date(a.dateTime);
+    });
+
+    
+    tableBody.innerHTML = '';
+
+    
+    games.forEach(game => {
+        const row = tableBody.insertRow();
+        row.insertCell(0).textContent = game.playerName;
+        row.insertCell(1).textContent = game.incorrectGuesses;
+        row.insertCell(2).textContent = game.wordLength;
+        row.insertCell(3).textContent = game.dateTime;
+        row.insertCell(4).textContent = game.outcome === 'win' ? 'Vinst' : 'Förlust';
+    });
+}
+
+
+displayScoreView();
+
+
+
