@@ -372,8 +372,8 @@ function displayScores(sortByGuesses = true) {
     const scoreHTML = slicedScoreList.map((score, index) => `
     <div class="score-item">
         <p>${index + 1}. ${score.playerName}</p>
-        <p>Antal gissningar: ${score.guesses}</p>
         <p>Antal fel: ${score.wrongGuesses}</p>
+        <p>Antal gissningar: ${score.guesses}</p>
         <p>Ordets längd: ${score.wordLength}</p>
         <p>Datum & Tid: ${score.date}</p>
         <p>Resultat: ${score.outcome}</p>
@@ -383,7 +383,39 @@ function displayScores(sortByGuesses = true) {
 document.querySelector('.display-score').innerHTML = scoreHTML;
 }
 
+// FUNKTION SOM SORTERAR LISTAN EFTER 1.datum och tid 2. antal fel gissningar
+function sortByDate() {
 
+    const scoreList = JSON.parse(localStorage.getItem('hangmanScores')) || [];
+    const slicedScoreList = scoreList.slice(0, 10);
+
+    slicedScoreList.sort((a, b) => {
+        const dateComparison = new Date(b.date) - new Date(a.date);
+        if (dateComparison !== 0) {
+            return dateComparison;
+        }
+        return a.wrongGuesses - b.wrongGuesses;
+    });
+
+    const scoreHTML = slicedScoreList.map(score => 
+        `<div class="score-item">
+            <p>${score.playerName}</p>
+            <p>Datum & Tid: ${score.date}</p>
+            <p>Antal fel: ${score.wrongGuesses}</p>
+            <p>Antal gissningar: ${score.guesses}</p>
+            <p>Ordets längd: ${score.wordLength}</p>
+            <p>Resultat: ${score.outcome}</p>
+        </div>`
+    ).join('');
+
+    document.querySelector('.display-score').innerHTML = scoreHTML;
+}
+
+const sortGuessesBtn = document.querySelector('.sort-guesses')
+const sortDateBtn = document.querySelector('.sort-date')
+
+sortDateBtn.addEventListener ('click', sortByDate )
+sortGuessesBtn.addEventListener ('click', displayScores )
 
 //===================//PoängVY END//===============================
 
