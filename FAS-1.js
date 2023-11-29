@@ -222,7 +222,7 @@ const misstake = (char) => {
             misstakeCount++;
         }
     }
-    checkGameStatus()
+    // checkGameStatus()
 };
 
 
@@ -266,7 +266,7 @@ const checkGameStatus = () => {
         winningSound.play();
         quantityGuesses.innerText = `Antal gissningar:${charCounter}`
         saveScore();
-        
+        console.log('game status 1');
     } else if (misstakeCount === hangman.length ){
         changeView()
         winLose.append(lose);
@@ -274,7 +274,8 @@ const checkGameStatus = () => {
         losingSound.play()
         quantityGuesses.innerText = `Antal gissningar:${charCounter}`
         saveScore();
-    }
+        console.log('game status 2');
+    }  
 }
 
 // Starta nytt spel knappen 
@@ -345,7 +346,7 @@ function saveScore() {
         date: new Date().toLocaleString(), 
         outcome: misstakeCount === hangman.length ? 'Förlust' : 'Vinst', 
     };
-
+    console.log('pushar en ny score');
       // Lägg till det nya resultatet i listan
       scoreList.push(scoreViewObjects);
 
@@ -354,11 +355,11 @@ function saveScore() {
 }
 
 // Skapa en funktion för att visa poängen på skärmen
-function displayScores(sortByDate = true) {
+function displayScores(sortByGuesses = true) {
     
     const scoreList = JSON.parse(localStorage.getItem('hangmanScores')) || [];
-
-    if(sortByDate) {
+    
+    if(sortByGuesses) {
         scoreList.sort((a, b) => a.wrongGuesses - b.wrongGuesses);
     } else {
         scoreList.sort((a, b) => new Date(b.date) - new Date(a.date));
