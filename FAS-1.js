@@ -341,7 +341,8 @@ function saveScore() {
 
     const scoreViewObjects = {
         playerName: inputElement.value,   
-        wrongGuesses: charCounter, 
+        guesses: charCounter,
+        wrongGuesses:misstakeCount, 
         wordLength: wordToUse.length, 
         date: new Date().toLocaleString(), 
         outcome: misstakeCount === hangman.length ? 'Förlust' : 'Vinst', 
@@ -368,17 +369,18 @@ function displayScores(sortByGuesses = true) {
         return new Date(b.date) - new Date(a.date);
     });
 
-    const scoreHTML = slicedScoreList.map(score => `
-        <div class="score-item">
-            <p>${score.playerName}</p>
-            <p>Antal gissningar: ${score.wrongGuesses}</p>
-            <p>Ordets längd: ${score.wordLength}</p>
-            <p>Datum & Tid: ${score.date}</p>
-            <p>Resultat: ${score.outcome}</p>
-        </div>
-    `).join('');
+    const scoreHTML = slicedScoreList.map((score, index) => `
+    <div class="score-item">
+        <p>${index + 1}. ${score.playerName}</p>
+        <p>Antal gissningar: ${score.guesses}</p>
+        <p>Antal fel: ${score.wrongGuesses}</p>
+        <p>Ordets längd: ${score.wordLength}</p>
+        <p>Datum & Tid: ${score.date}</p>
+        <p>Resultat: ${score.outcome}</p>
+    </div>
+`).join('');
 
-    document.querySelector('.display-score').innerHTML = scoreHTML;
+document.querySelector('.display-score').innerHTML = scoreHTML;
 }
 
 

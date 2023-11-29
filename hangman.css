@@ -261,20 +261,27 @@ h1 {
     padding: 2em;
 }
 
-.display-score, .score-container > h1,
+.flex-score {
+    display: flex;
+    /* flex-direction: column; */
+}
+.display-score,
+.score-container > h1,
 .score-container > h2 {
     color: #a45252;
     text-align: center;
     font-family: "Pixelify Sans", sans-serif;
 }
-
+.score-item > p:first-child {
+    font-size: 1.3em;
+}
 .score-container > h1 {
     padding-bottom: 0;
 }
 
 .score-container > h2 {
     font-size: 1.9em;
-    margin-bottom: .5em;
+    margin-bottom: 0.5em;
 }
 
 .display-score > * {
@@ -302,10 +309,11 @@ h1 {
     margin-bottom: 20px;
 }
 
-#score .button1, .sort-btns > * {
-    border-radius: .5em;
+#score .button1,
+.sort-btns > * {
+    border-radius: 0.5em;
     border: none;
-    padding: .5em;
+    padding: 0.5em;
     box-shadow: 0px 0px 8px gray;
     font-family: "Pixelify Sans", sans-serif;
     font-size: 15px;
@@ -323,13 +331,12 @@ h1 {
     justify-content: center;
 }
 
-.sort-btns> * {
-   margin: .5em;
-   padding: .2em;
-   cursor: pointer;
-   background-color:#a4525294;
+.sort-btns > * {
+    margin: 0.5em;
+    padding: 0.2em;
+    cursor: pointer;
+    background-color: #a4525294;
 }
-
 
 /* POÄNGVY END  */
 
