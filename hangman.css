@@ -261,18 +261,20 @@ h1 {
     padding: 2em;
 }
 
-/* .score-container > h1,
+.display-score, .score-container > h1,
 .score-container > h2 {
     color: #a45252;
     text-align: center;
-    margin: 2px;
     font-family: "Pixelify Sans", sans-serif;
-} */
+}
 
-.display-score, .score-container > h1 {
-    color: #a45252;
-    text-align: center;
-    font-family: "Pixelify Sans", sans-serif;
+.score-container > h1 {
+    padding-bottom: 0;
+}
+
+.score-container > h2 {
+    font-size: 1.9em;
+    margin-bottom: .5em;
 }
 
 .display-score > * {
@@ -300,7 +302,7 @@ h1 {
     margin-bottom: 20px;
 }
 
-#score .button1, .show-more {
+#score .button1, .sort-btns > * {
     border-radius: .5em;
     border: none;
     padding: .5em;
@@ -308,22 +310,12 @@ h1 {
     font-family: "Pixelify Sans", sans-serif;
     font-size: 15px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-.button1{
+    transition: all 0.3s ease;
     background-color: rgb(123, 200, 180);
 }
 
 #score .button1:hover {
     background-color: #45a049;
-}
-
-.show-more {
-    background-color: #a45252;
-}
-
-.show-more:hover {
-    background-color: #d40606;
 }
 
 .sort-btns {
@@ -334,6 +326,8 @@ h1 {
 .sort-btns> * {
    margin: .5em;
    padding: .2em;
+   cursor: pointer;
+   background-color:#a4525294;
 }
 
 

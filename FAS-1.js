@@ -358,14 +358,17 @@ function saveScore() {
 function displayScores(sortByGuesses = true) {
     
     const scoreList = JSON.parse(localStorage.getItem('hangmanScores')) || [];
-    
-    if(sortByGuesses) {
-        scoreList.sort((a, b) => a.wrongGuesses - b.wrongGuesses);
-    } else {
-        scoreList.sort((a, b) => new Date(b.date) - new Date(a.date));
-    }
+    const slicedScoreList = scoreList.slice(0, 10);
 
-    const scoreHTML = scoreList.map(score => `
+    slicedScoreList.sort((a, b) => {
+        const guessesComparison = a.wrongGuesses - b.wrongGuesses;
+        if (guessesComparison !== 0) {
+            return guessesComparison;
+        }
+        return new Date(b.date) - new Date(a.date);
+    });
+
+    const scoreHTML = slicedScoreList.map(score => `
         <div class="score-item">
             <p>${score.playerName}</p>
             <p>Antal gissningar: ${score.wrongGuesses}</p>
