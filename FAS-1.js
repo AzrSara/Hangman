@@ -293,14 +293,14 @@ function changeViewBack() {
 
     gameOver.style.display = 'none'
     gameView.style.display = 'block'
-    location.reload()
+    reset()
 
 }
 newGame.addEventListener ('click', changeViewBack);
 
 //Starta om Knappen
 restartBtn.addEventListener('click', () => {
-    location.reload()
+    reset()
 })
 
 // POÄNGVY KNAPPEN
@@ -338,7 +338,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function startNewGame() {
         score.style.display = 'none';
         button1.style.display = 'block';
-        location.reload()
+        reset()
     }
   
     // Anropar funktionen när .button1 klickas
@@ -432,6 +432,27 @@ sortGuessesBtn.addEventListener ('click', displayScores )
 
 //===================//PoängVY END//===============================
 
+//  =============== STARTA OM SPEL ========================
+//  funktion för att resetta variblar för att starta om spel
+function reset() {
+    charCounter = 1
+    misstakeCount = 0
+    guessedLetters = Array(wordToUse.length).fill("_ "); 
+    displayLines(); 
+    hangman.forEach(part => part.classList.add("on")); 
+    inputElement.value = ''; 
+    inputElement.style.display = 'inline-block';
+    const outputElement = document.querySelector('.name-output');
+    outputElement.textContent = ''; 
+    const keyboard = document.querySelector(".keyboard");
+    keyboard.classList.add("on");
+    const startBtn = document.querySelector('.game-starter');
+    startBtn.style.display = 'inline-block';
+    startBtn.disabled = true; 
+    wordContainer.classList.add("on");
+}
+
+//====================START-GAME===================================
 //====================START-GAME===================================
 let startView = document.querySelector(".overlay")
 

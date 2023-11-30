@@ -389,7 +389,13 @@ h1 {
 }
 .score-item > p:first-child {
     font-size: 1.3em;
+    font-weight: bold;
 }
+
+.score-item > p:nth-child(2) {
+    font-size: 1.1em;
+}
+
 .score-container > h1 {
     padding-bottom: 0;
 }
