@@ -249,7 +249,9 @@ h1 {
     background-color: rgb(47, 36, 111);
 } */
 
-.easy:hover, .normal:hover, .hard:hover {
+.easy:hover,
+.normal:hover,
+.hard:hover {
     color: #ebe5e5;
 }
 
@@ -392,7 +394,9 @@ h1 {
 }
 .score-container {
     margin: 3em auto;
-    background-color: #fffefe;
+    /* background-color: #fffefe; */
+    background-image: url("https://img.freepik.com/free-vector/blank-white-notepaper-design_53876-118304.jpg?w=740&t=st=1701353728~exp=1701354328~hmac=f43b3b75e91667e3dde83a7fb3fd6cfe09b2c824798f23876ee2debfe8c54476");
+    opacity: 0.95;
     border-radius: 0.5em;
     box-shadow: 0px 0px 20px #2a2a2a;
     height: fit-content;
@@ -400,31 +404,44 @@ h1 {
     padding: 2em;
 }
 
-.flex-score {
-    display: flex;
-    /* flex-direction: column; */
-}
 .display-score,
 .score-container > h1,
 .score-container > h2 {
-    color: #a45252;
+    color: #424275;
     text-align: center;
     font-family: "Pixelify Sans", sans-serif;
 }
+
+.score-item > * {
+    font-family: cursive;
+}
+
+.score-item > p {
+    font-size: 1.1em;
+    /* font-weight: bold; */
+}
 .score-item > p:first-child {
-    font-size: 1.3em;
+    font-size: 1.4em;
     font-weight: bold;
+    color: rgb(97, 175, 186);
+}
+
+.score-item > p:nth-child(5) {
+    font-weight: bold;
+    margin-bottom: 20px;
 }
 
 .score-item > p:nth-child(2) {
-    font-size: 1.1em;
+    font-weight: bold;
 }
 
 .score-container > h1 {
     padding-bottom: 0;
+    color: #a45252;
 }
 
 .score-container > h2 {
+    color: #a45252;
     font-size: 1.9em;
     margin-bottom: 0.5em;
 }

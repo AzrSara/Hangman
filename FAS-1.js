@@ -360,6 +360,8 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   //   SKAPAR FUNKTION FÖR ATT SPARA RESULTAT
+ 
+
 function saveScore() {
     const scoreList = JSON.parse(localStorage.getItem('hangmanScores')) || [];
 
@@ -399,14 +401,16 @@ function displayScores() {
     <div class="score-item">
         <p>${index + 1}. ${score.playerName}</p>
         <p>Antal fel: ${score.wrongGuesses}</p>
-        <p>Antal gissningar: ${score.guesses}</p>
         <p>Ordets längd: ${score.wordLength}</p>
-        <p>Datum & Tid: ${score.date}</p>
-        <p>Resultat: ${score.outcome}</p>
+        <p>${score.date}</p>
+        <p style="color: ${score.outcome === 'Förlust' ? '#ca1a14' : '#2abd17'};">${score.outcome}</p>
     </div>
 `).join('');
 
 document.querySelector('.display-score').innerHTML = scoreHTML;
+
+
+
 }
 
 // FUNKTION SOM SORTERAR LISTAN EFTER 1.datum och tid 2. antal fel gissningar
@@ -427,16 +431,16 @@ function sortByDate() {
     const scoreHTML = slicedScoreList.map(score => 
         `<div class="score-item">
             <p>${score.playerName}</p>
-            <p>Datum & Tid: ${score.date}</p>
+            <p>${score.date}</p>
             <p>Antal fel: ${score.wrongGuesses}</p>
-            <p>Antal gissningar: ${score.guesses}</p>
             <p>Ordets längd: ${score.wordLength}</p>
-            <p>Resultat: ${score.outcome}</p>
+            <p style="color: ${score.outcome === 'Förlust' ? '#ca1a14' : '#2abd17'};">${score.outcome}</p>
         </div>`
     ).join('');
-
     document.querySelector('.display-score').innerHTML = scoreHTML;
 }
+
+
 
 const sortGuessesBtn = document.querySelector('.sort-guesses')
 const sortDateBtn = document.querySelector('.sort-date')
@@ -469,7 +473,7 @@ function reset() {
     levelButtons.forEach(button => button.classList.remove('selected'));
     isLevelSelected = false;
     isNameEntered = false;
-    updateStartButtonState();
+    
 }
 
 //====================START-GAME===================================
