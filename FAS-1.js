@@ -140,7 +140,7 @@ inputElement.addEventListener('keydown', function (event)  {
             keyboard.classList.remove("on")
             wordContainer.classList.remove("on")
             // overlay.style.display = 'none';
-            // changeStartView()
+            changeStartView()
         }
         
     }
