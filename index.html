@@ -10,19 +10,36 @@
 	<script type="module" src="FAS-1.js"></script>
 </head>
 <body>
+	<div class="overlay" id="overlay">
+		<div class="start-container" id="start-container">
+		  <div class="start-view">
+			<h1>Hänga Gubbe</h1>
+			<p>Starta spelet genom att skriva in ditt namn och välja nivå!</p>
+			<div class="levels">
+			<button class="easy">Lätt</button>
+			<button class="normal">Mellan</button>
+			<button class="hard">Svår</button>
+		</div>
+		<div>
+			  <input class="name-input" type="text" placeholder="Skriv in ditt namn" required>
+			  <button class="game-starter" disabled>Börja spela</button>
+			</div>
+		  </div>
+		</div>
+	  </div>
 	<section class="window">
 		<div class="flex-container">
 			<h1>Hänga Gubbe</h1>
 			<div class="levels">
-				<button class="easy">Lätt</button>
+				<!-- <button class="easy">Lätt</button>
 				<button class="normal">Mellan</button>
-				<button class="hard">Svår</button>
+				<button class="hard">Svår</button> -->
 				<button id="restart-btn">Starta om</button>
 				<button id="score-view">Poäng vy</button>
 			</div>
 			<div>
-				<input class="name-input" type="text" placeholder="Skriv in ditt namn" required>
-				<button class="game-starter" disabled>Börja spela</button>
+				<!-- <input class="name-input" type="text" placeholder="Skriv in ditt namn" required>
+				<button class="game-starter" disabled>Börja spela</button> -->
 			</div>
 		</div>
 		

@@ -130,31 +130,41 @@ startBtn.addEventListener('click', () => {
 });
 
 // Anropar funktionen vid klick på entertagenten
+let isLevelSelected = false;
+let isNameEntered = false;
+
 inputElement.addEventListener('keydown', function (event)  {
     if (event.key === 'Enter') {
-        displayName();
+        if (isLevelSelected && isNameEntered){
+            displayName();
+            keyboard.classList.remove("on")
+            wordContainer.classList.remove("on")
+            // overlay.style.display = 'none';
+            // changeStartView()
+        }
+        
     }
 });
 
 // Börja Spela knaooen är disable innan man fyller namn och trycker på ett av lvl alt
 
-const levelButtons = document.querySelectorAll('.easy, .normal, .hard');
-function startBtnStatus() {
-    if (inputElement.value.trim() && easyBtn || normalBtn || hardBtn) {
-        startBtn.disabled = false;
-    } else {
-        startBtn.disabled = true;
-    }
-}
+// const levelButtons = document.querySelectorAll('.easy, .normal, .hard');
+// function startBtnStatus() {
+//     if (inputElement.value.trim() && easyBtn || normalBtn || hardBtn) {
+//         startBtn.disabled = false;
+//     } else {
+//         startBtn.disabled = true;
+//     }
+// }
 
-levelButtons.forEach(button => {
-    button.addEventListener('click', function() {
-        levelSelected = true;
-        startBtnStatus(); 
-    });
-});
+// levelButtons.forEach(button => {
+//     button.addEventListener('click', function() {
+//         levelSelected = true;
+//         startBtnStatus(); 
+//     });
+// });
 
-//Knappen Börja Spela är disable innan men har skrivit sitt namn
+// Knappen Börja Spela är disable innan men har skrivit sitt namn
 // inputElement.addEventListener('input', () => {
 // const name = this.value.trim()
 // if (name.length > 0) {
@@ -423,3 +433,53 @@ sortGuessesBtn.addEventListener ('click', displayScores )
 //===================//PoängVY END//===============================
 
 //====================START-GAME===================================
+let startView = document.querySelector(".overlay")
+
+
+const changeStartView = () => {
+startView.style.display = "none"
+gameView.style.display = "block"
+}
+document.addEventListener('DOMContentLoaded', function () {
+    
+    const levelButtons = document.querySelectorAll('.levels button');
+    const overlay = document.querySelector('.overlay');
+    
+    
+    function updateStartButtonState() {
+        if (isLevelSelected && isNameEntered) {
+            startBtn.removeAttribute('disabled');
+        } else {
+            startBtn.setAttribute('disabled', 'disabled');
+        }
+    }
+
+
+    levelButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            isLevelSelected = true;
+            updateStartButtonState();
+            levelButtons.forEach(btn => btn.classList.remove('selected'));
+            button.classList.add('selected');
+        });
+        
+        inputElement.addEventListener('input', function () {
+            isNameEntered = inputElement.value.trim() !== '';
+            updateStartButtonState(); 
+        });
+    });
+
+    // Function to start the game and hide the overlay
+    function startGame() {
+        // Check if a name is entered before starting the game
+        if (inputElement.value.trim() !== '') {
+            // Add your game start logic here
+
+            // Hide the overlay
+            overlay.style.display = 'none';
+        } 
+    }
+
+    // Add an event listener to the "Börja spela" button
+    startBtn.addEventListener('click', startGame);
+});
