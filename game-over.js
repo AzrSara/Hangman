@@ -24,7 +24,7 @@ export const losingSound = document.querySelector('.lose-sound')
 // }
 
 // Skapar en funktion där spelvyn tas bort och game over vyn tas fram när man klickar på en knapp
-export function changeView() {
+export function changeFromGameView() {
     gameView.style.display = 'none';
     gameOver.style.display = 'block';
 
@@ -51,10 +51,10 @@ export function changeView() {
 
 
 // Anropar funktionen
-testBtn.addEventListener ('click', changeView);
+testBtn.addEventListener ('click', changeFromGameView);
 
 // Skapar en funktion där gameover vyn tas bort och spelvyn vyn tas fram när man klickar på en knapp
-export function changeViewBack() {
+export function changeFromGameOver() {
 
     gameOver.style.display = 'none'
     gameView.style.display = 'block'
@@ -62,6 +62,6 @@ export function changeViewBack() {
 }
 
 // Anropar funktionen
-newGame.addEventListener ('click', changeViewBack);
+newGame.addEventListener ('click', changeFromGameOver);
 
 

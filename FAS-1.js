@@ -1,5 +1,5 @@
 import {words} from "./svenska-ord.js"
-// import {testBtn, gameView, gameOver, newGame, changeView, changeViewBack} from './game-over.js';
+// import {testBtn, gameView, gameOver, newGame, changeFromGameView, changeFromGameOver} from './game-over.js';
 
 
 //===================//FAS-1 START//==========================================
@@ -123,6 +123,7 @@ const inputElement = document.querySelector('.name-input');
 // anropar funktionen vid klick på startknappen
 const keyboard = document.querySelector(".keyboard")
 startBtn.addEventListener('click', () => {
+    changeFromStartView()
     displayName()
     keyboard.classList.remove("on")
     wordContainer.classList.remove("on")
@@ -140,7 +141,7 @@ inputElement.addEventListener('keydown', function (event)  {
             keyboard.classList.remove("on")
             wordContainer.classList.remove("on")
             // overlay.style.display = 'none';
-            // changeStartView()
+            changeFromStartView()
         }
         
     }
@@ -254,8 +255,20 @@ const loseEmoji = document.querySelector('.lose-emoji');
 const winningSound = document.querySelector('.win-sound');
 const losingSound = document.querySelector('.lose-sound');
 const scoreViewBtn = document.querySelector('.results');
+const startView = document.querySelector('.overlay');
 
-const changeView = () => {
+
+const changeFromStartView = () => {
+    startView.style.display = 'none'
+    gameView.style.display = 'block'
+}
+
+const changeStartViewBack = () => {
+    gameView.style.display = 'none'
+    startView.style.display = 'block'
+}
+
+const changeFromGameView = () => {
     gameView.style.display = 'none';
     gameOver.style.display = 'block';
 
@@ -270,41 +283,42 @@ const changeView = () => {
 const checkGameStatus = () => {
   
     if (guessedLetters.join('').toUpperCase() === wordToUse.toUpperCase()) {
-        changeView()
+        changeFromGameView()
         winLose.append(win);
         winEmoji.style.display = 'block'
         winningSound.play();
         quantityGuesses.innerText = `Antal gissningar:${charCounter}`
         saveScore();
-        console.log('game status 1');
+        // console.log('game status 1');
     } else if (misstakeCount === hangman.length ){
-        changeView()
+        changeFromGameView()
         winLose.append(lose);
         loseEmoji.style.display = 'block'
         losingSound.play()
         quantityGuesses.innerText = `Antal gissningar:${charCounter}`
         saveScore();
-        console.log('game status 2');
+        // console.log('game status 2');
     }  
 }
 
 // Starta nytt spel knappen 
-function changeViewBack() {
+function changeFromGameOver() {
 
     gameOver.style.display = 'none'
-    gameView.style.display = 'block'
+    startView.style.display = 'block'
     reset()
 
 }
-newGame.addEventListener ('click', changeViewBack);
+newGame.addEventListener ('click', changeFromGameOver);
 
 //Starta om Knappen
 restartBtn.addEventListener('click', () => {
+    changeStartViewBack()
     reset()
 })
 
 // POÄNGVY KNAPPEN
-function changeViewScore() {
+function changeFromGameViewScore() {
 
     gameOver.style.display = 'none'
     score.style.display = 'block'
@@ -312,7 +326,7 @@ function changeViewScore() {
     
 
 }
-scoreViewBtn.addEventListener ('click', changeViewScore);
+scoreViewBtn.addEventListener ('click', changeFromGameViewScore);
 
 //===================//FAS-3AEND//=============================
 //===================//PoängVY START//===============================
@@ -325,19 +339,19 @@ document.addEventListener('DOMContentLoaded', function () {
     const newGameButton = document.querySelector('.button1');
   
     // Skapar en funktion där spelvyn tas bort och score vyn tas fram när man klickar på en knapp
-    function changeView() {
+    function changeFromGameView() {
         button1.style.display = 'none';
         score.style.display = 'block';
         displayScores()
     }
   
     // Anropar funktionen när #score-view klickas
-    scoreView.addEventListener('click', changeView);
+    scoreView.addEventListener('click', changeFromGameView);
   
     // Skapar en funktion där poängvyn tas bort och spelvyn tas fram när man klickar på "Starta nytt spel" i poängvyn
     function startNewGame() {
         score.style.display = 'none';
-        button1.style.display = 'block';
+        startView.style.display = 'block';
         reset()
     }
   
@@ -446,25 +460,24 @@ function reset() {
     outputElement.textContent = ''; 
     const keyboard = document.querySelector(".keyboard");
     keyboard.classList.add("on");
+    keyLetters.forEach(key => key.classList.remove('key-pressed'));
     const startBtn = document.querySelector('.game-starter');
     startBtn.style.display = 'inline-block';
     startBtn.disabled = true; 
     wordContainer.classList.add("on");
+    const levelButtons = document.querySelectorAll('.levels button');
+    levelButtons.forEach(button => button.classList.remove('selected'));
+    isLevelSelected = false;
+    isNameEntered = false;
+    updateStartButtonState();
 }
 
 //====================START-GAME===================================
 //====================START-GAME===================================
-let startView = document.querySelector(".overlay")
 
-
-const changeStartView = () => {
-startView.style.display = "none"
-gameView.style.display = "block"
-}
 document.addEventListener('DOMContentLoaded', function () {
     
     const levelButtons = document.querySelectorAll('.levels button');
-    const overlay = document.querySelector('.overlay');
     
     
     function updateStartButtonState() {
@@ -495,9 +508,6 @@ document.addEventListener('DOMContentLoaded', function () {
         // Check if a name is entered before starting the game
         if (inputElement.value.trim() !== '') {
             // Add your game start logic here
-
-            // Hide the overlay
-            overlay.style.display = 'none';
         } 
     }
 
