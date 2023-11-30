@@ -133,6 +133,8 @@ startBtn.addEventListener('click', () => {
 inputElement.addEventListener('keydown', function (event)  {
     if (event.key === 'Enter') {
         displayName();
+        keyboard.classList.remove("on")
+        wordContainer.classList.remove("on")
     }
 });
 
@@ -283,14 +285,14 @@ function changeViewBack() {
 
     gameOver.style.display = 'none'
     gameView.style.display = 'block'
-    location.reload()
+    reset()
 
 }
 newGame.addEventListener ('click', changeViewBack);
 
 //Starta om Knappen
 restartBtn.addEventListener('click', () => {
-    location.reload()
+    reset()
 })
 
 // POÄNGVY KNAPPEN
@@ -328,7 +330,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function startNewGame() {
         score.style.display = 'none';
         button1.style.display = 'block';
-        location.reload()
+        reset()
     }
   
     // Anropar funktionen när .button1 klickas
@@ -356,12 +358,12 @@ function saveScore() {
 }
 
 // Skapa en funktion för att visa poängen på skärmen
-function displayScores(sortByGuesses = true) {
+function displayScores() {
     
     const scoreList = JSON.parse(localStorage.getItem('hangmanScores')) || [];
-    const slicedScoreList = scoreList.slice(0, 10);
+    
 
-    slicedScoreList.sort((a, b) => {
+    scoreList.sort((a, b) => {
         const guessesComparison = a.wrongGuesses - b.wrongGuesses;
         if (guessesComparison !== 0) {
             return guessesComparison;
@@ -369,6 +371,8 @@ function displayScores(sortByGuesses = true) {
         return new Date(b.date) - new Date(a.date);
     });
 
+    const slicedScoreList = scoreList.slice(0, 10);
+    
     const scoreHTML = slicedScoreList.map((score, index) => `
     <div class="score-item">
         <p>${index + 1}. ${score.playerName}</p>
@@ -387,16 +391,17 @@ document.querySelector('.display-score').innerHTML = scoreHTML;
 function sortByDate() {
 
     const scoreList = JSON.parse(localStorage.getItem('hangmanScores')) || [];
-    const slicedScoreList = scoreList.slice(0, 10);
-
-    slicedScoreList.sort((a, b) => {
+    
+    scoreList.sort((a, b) => {
         const dateComparison = new Date(b.date) - new Date(a.date);
         if (dateComparison !== 0) {
             return dateComparison;
         }
         return a.wrongGuesses - b.wrongGuesses;
     });
-
+    
+    const slicedScoreList = scoreList.slice(0, 10);
+    
     const scoreHTML = slicedScoreList.map(score => 
         `<div class="score-item">
             <p>${score.playerName}</p>
@@ -418,5 +423,25 @@ sortDateBtn.addEventListener ('click', sortByDate )
 sortGuessesBtn.addEventListener ('click', displayScores )
 
 //===================//PoängVY END//===============================
+
+//  =============== STARTA OM SPEL ========================
+//  funktion för att resetta variblar för att starta om spel
+function reset() {
+    charCounter = 1
+    misstakeCount = 0
+    guessedLetters = Array(wordToUse.length).fill("_ "); 
+    displayLines(); 
+    hangman.forEach(part => part.classList.add("on")); 
+    inputElement.value = ''; 
+    inputElement.style.display = 'inline-block';
+    const outputElement = document.querySelector('.name-output');
+    outputElement.textContent = ''; 
+    const keyboard = document.querySelector(".keyboard");
+    keyboard.classList.add("on");
+    const startBtn = document.querySelector('.game-starter');
+    startBtn.style.display = 'inline-block';
+    startBtn.disabled = true; 
+    wordContainer.classList.add("on");
+}
 
 //====================START-GAME===================================
