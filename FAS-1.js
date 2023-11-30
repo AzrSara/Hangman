@@ -356,12 +356,12 @@ function saveScore() {
 }
 
 // Skapa en funktion för att visa poängen på skärmen
-function displayScores(sortByGuesses = true) {
+function displayScores() {
     
     const scoreList = JSON.parse(localStorage.getItem('hangmanScores')) || [];
-    const slicedScoreList = scoreList.slice(0, 10);
+    
 
-    slicedScoreList.sort((a, b) => {
+    scoreList.sort((a, b) => {
         const guessesComparison = a.wrongGuesses - b.wrongGuesses;
         if (guessesComparison !== 0) {
             return guessesComparison;
@@ -369,6 +369,8 @@ function displayScores(sortByGuesses = true) {
         return new Date(b.date) - new Date(a.date);
     });
 
+    const slicedScoreList = scoreList.slice(0, 10);
+    
     const scoreHTML = slicedScoreList.map((score, index) => `
     <div class="score-item">
         <p>${index + 1}. ${score.playerName}</p>
@@ -387,16 +389,17 @@ document.querySelector('.display-score').innerHTML = scoreHTML;
 function sortByDate() {
 
     const scoreList = JSON.parse(localStorage.getItem('hangmanScores')) || [];
-    const slicedScoreList = scoreList.slice(0, 10);
-
-    slicedScoreList.sort((a, b) => {
+    
+    scoreList.sort((a, b) => {
         const dateComparison = new Date(b.date) - new Date(a.date);
         if (dateComparison !== 0) {
             return dateComparison;
         }
         return a.wrongGuesses - b.wrongGuesses;
     });
-
+    
+    const slicedScoreList = scoreList.slice(0, 10);
+    
     const scoreHTML = slicedScoreList.map(score => 
         `<div class="score-item">
             <p>${score.playerName}</p>
