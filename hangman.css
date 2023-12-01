@@ -189,6 +189,13 @@ h1 {
     visibility: hidden;
 }
 
+.wrong-letter {
+    background: #9a1c1c;
+    color: #aaa;
+    position: relative;
+    top: 0.2em;
+    box-shadow: 0 0 0 0.05em black;
+}
 /* GAME-SECTION END */
 
 /* STARTVY START */
@@ -203,8 +210,8 @@ body::-webkit-scrollbar-thumb {
 .overlay {
     background: rgb(97, 175, 186);
     position: fixed;
-    top: 0;
-    left: 0;
+    /* top: 0;
+    left: 0; */
     width: 100%;
     height: 100%;
     display: flex;
@@ -231,7 +238,7 @@ body::-webkit-scrollbar-thumb {
 .levels button:hover {
     background-color: rgb(47, 36, 111);
 }
-*/ .easy:hover,
+.easy:hover,
 .normal:hover,
 .hard:hover {
     color: #ebe5e5;
@@ -315,6 +322,8 @@ body::-webkit-scrollbar-thumb {
     margin: 3em auto;
     /* background-color: #fffefe; */
     background-image: url("https://img.freepik.com/free-vector/blank-white-notepaper-design_53876-118304.jpg?w=740&t=st=1701353728~exp=1701354328~hmac=f43b3b75e91667e3dde83a7fb3fd6cfe09b2c824798f23876ee2debfe8c54476");
+    background-size: cover;
+    background-size: contain;
     opacity: 0.95;
     border-radius: 0.5em;
     box-shadow: 0px 0px 20px #2a2a2a;
@@ -336,7 +345,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .score-item > p {
-    font-size: 1.1em;
+    font-size: 1.2em;
     /* font-weight: bold; */
 }
 .score-item > p:first-child {
@@ -440,11 +449,6 @@ body::-webkit-scrollbar-thumb {
     .keyboard {
         font-size: 0.8em;
     }
-
-    .letters {
-        margin-top: 0.5em;
-        font-size: 2em;
-    }
 }
 
 @media (max-width: 1310px) {
@@ -472,6 +476,10 @@ body::-webkit-scrollbar-thumb {
     #name {
         font-size: 1.5em;
     }
+    .letters {
+        margin-top: 0.5em;
+        font-size: 1.5em;
+    }
 }
 
 @media (max-width: 790px) {
@@ -494,7 +502,6 @@ body::-webkit-scrollbar-thumb {
     }
 
     .letters {
-        font-size: 1.8em;
         margin-top: 1em;
     }
 
@@ -549,5 +556,53 @@ body::-webkit-scrollbar-thumb {
     .letters {
         font-size: 1.4em;
         margin-top: 3em;
+    }
+
+    .sort-date,
+    .sort-guesses {
+        font-size: 0.6em;
+    }
+}
+
+/* Media för score vy */
+@media screen and (max-width: 679px) {
+    .score-container {
+        /* margin: 1em; */
+        padding: 1em;
+        max-width: 100%;
+        margin: 3em 2em;
+    }
+
+    .sort-date,
+    .sort-guesses {
+        font-size: 0.8em;
+    }
+
+    .score-item > p {
+        font-size: 1.1em;
+    }
+}
+
+@media screen and (min-width: 680px) and (max-width: 1000px) {
+    .score-container {
+        padding: 1.5em;
+        margin: 3em auto;
+        /* max-width: 90%; */
+        background-size: contain;
+    }
+    .score-item > p {
+        font-size: 1.2em;
+    }
+}
+
+@media (max-width: 380px) {
+    .sort-date,
+    .sort-guesses {
+        font-size: 0.5em;
+        width: 10em;
+    }
+
+    .score-item > p {
+        font-size: 0.9em;
     }
 }

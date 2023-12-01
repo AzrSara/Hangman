@@ -103,7 +103,7 @@ keyLetters.forEach(key => {
 })
 
 //===================//FAS-1 END//==========================================
-let levelSelected = false 
+// let levelSelected = false 
 // skapar funktion för att flytta Namnet över gubben
 function displayName() {
     const inputElement = document.querySelector('.name-input');
@@ -188,10 +188,13 @@ let hangman = [ground, scaffold, head, body, arms, legs]
 //keyLetters från rad 79; Keyboard blir aktiv nu, data tas från data-char
 let charCounter = 1
 keyLetters.forEach(key => {
-    key.addEventListener('click', () => {
+    key.addEventListener('click', (event) => {
         const char = key.getAttribute('data-char')
-        showLetter(char)
-        charCounter++
+        showLetter(char);
+        if (!wordToUse.toUpperCase().includes(char)) {
+            // Если буква не в слове, меняем класс кнопки на 'wrong-letter'
+            event.target.classList.add('wrong-letter')
+        }
     })
 })
 
@@ -230,10 +233,10 @@ const misstake = (char) => {
     if (misstakeFound) {
         if (misstakeCount < hangman.length) {
             hangman[misstakeCount].classList.remove("on");
-            misstakeCount++;
+            misstakeCount++;    
         }
     }
-    // checkGameStatus()
+   
 };
 
 
@@ -265,7 +268,7 @@ const changeFromStartView = () => {
 
 const changeStartViewBack = () => {
     gameView.style.display = 'none'
-    startView.style.display = 'block'
+    startView.style.display = 'flex'
 }
 
 const changeFromGameView = () => {
@@ -305,7 +308,7 @@ const checkGameStatus = () => {
 function changeFromGameOver() {
 
     gameOver.style.display = 'none'
-    startView.style.display = 'block'
+    startView.style.display = 'flex'
     reset()
 
 }
@@ -351,7 +354,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Skapar en funktion där poängvyn tas bort och spelvyn tas fram när man klickar på "Starta nytt spel" i poängvyn
     function startNewGame() {
         score.style.display = 'none';
-        startView.style.display = 'block';
+        startView.style.display = 'flex';
         reset()
     }
   
@@ -464,7 +467,7 @@ function reset() {
     outputElement.textContent = ''; 
     const keyboard = document.querySelector(".keyboard");
     keyboard.classList.add("on");
-    keyLetters.forEach(key => key.classList.remove('key-pressed'));
+    keyLetters.forEach(key => key.classList.remove('key-pressed','wrong-letter'));
     const startBtn = document.querySelector('.game-starter');
     startBtn.style.display = 'inline-block';
     startBtn.disabled = true; 
