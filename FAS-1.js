@@ -163,6 +163,7 @@ keyLetters.forEach(key => {
     key.addEventListener('click', (event) => {
         const char = key.getAttribute('data-char')
         showLetter(char);
+        charCounter++
         if (!wordToUse.toUpperCase().includes(char)) {
             // Если буква не в слове, меняем класс кнопки на 'wrong-letter'
             event.target.classList.add('wrong-letter')
@@ -264,7 +265,6 @@ const checkGameStatus = () => {
         winningSound.play();
         quantityGuesses.innerText = `Antal gissningar:${charCounter}`
         saveScore();
-        // console.log('game status 1');
     } else if (misstakeCount === hangman.length ){
         changeFromGameView()
         winLose.append(lose);
@@ -272,7 +272,6 @@ const checkGameStatus = () => {
         losingSound.play()
         quantityGuesses.innerText = `Antal gissningar:${charCounter}`
         saveScore();
-        // console.log('game status 2');
     }  
 }
 
