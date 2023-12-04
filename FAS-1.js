@@ -147,34 +147,6 @@ inputElement.addEventListener('keydown', function (event)  {
     }
 });
 
-// Börja Spela knaooen är disable innan man fyller namn och trycker på ett av lvl alt
-
-// const levelButtons = document.querySelectorAll('.easy, .normal, .hard');
-// function startBtnStatus() {
-//     if (inputElement.value.trim() && easyBtn || normalBtn || hardBtn) {
-//         startBtn.disabled = false;
-//     } else {
-//         startBtn.disabled = true;
-//     }
-// }
-
-// levelButtons.forEach(button => {
-//     button.addEventListener('click', function() {
-//         levelSelected = true;
-//         startBtnStatus(); 
-//     });
-// });
-
-// Knappen Börja Spela är disable innan men har skrivit sitt namn
-// inputElement.addEventListener('input', () => {
-// const name = this.value.trim()
-// if (name.length > 0) {
-//     playButton.disabled = false
-// } else {
-//     playButton.disabled = true
-// }
-// })
-
 //===================//FAS-2 START//==========================================
 let ground = document.querySelector("#ground")
 let scaffold = document.querySelector("#scaffold")

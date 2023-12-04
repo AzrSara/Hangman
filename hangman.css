@@ -9,23 +9,74 @@ body {
     background-color: rgb(97, 175, 186);
 }
 
-.window {
-    margin: 2.7em 10em;
-    background-color: #fffefe;
-    border-radius: 0.5em;
-    box-shadow: 0px 0px 20px #2a2a2a;
-    height: 90vh;
-    display: none;
-}
-
-.flex-container {
-    padding: 2em 2em 0.5em 2em;
-    text-align: center;
-}
-
 h1 {
     font-size: 2.3em;
     padding: 0.7em;
+}
+
+/* START VY BÖRJAR  */
+.overlay {
+    background: rgb(97, 175, 186);
+    position: fixed; 
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.start-container {
+    width: 90%;
+    max-width: 500px;
+    background: #fefdfd;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 8px 9px rgb(54, 119, 125);
+    text-align: center;
+    overflow: hidden;
+}
+
+.start-view p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.easy {
+    background-color: rgb(53, 168, 53);
+}
+
+.normal {
+    background-color: rgb(226, 226, 32);
+}
+
+.hard {
+    background-color: rgb(208, 58, 58);
+}
+
+.easy:hover {
+    background-color: rgb(16, 78, 16);;
+}
+
+.normal:hover {
+    background-color: rgb(107, 109, 5);
+}
+
+.hard:hover {
+    background-color: rgb(90, 11, 11);
+}
+.easy:hover,
+.normal:hover,
+.hard:hover,
+.game-starter:hover,
+#restart-btn:hover,
+.btn-container > *:hover {
+    color: #ebe5e5;
+}
+
+.levels button.selected {
+    background-color: #2e2f30;
+    color: white;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
 .name-input,
@@ -43,11 +94,16 @@ h1 {
 .name-input {
     width: 9.5em;
 }
+
 .game-starter {
     width: 7em;
     margin-left: 1em;
     background-color: rgb(146, 131, 197);
     cursor: pointer;
+}
+
+.game-starter:hover {
+    background-color: rgb(64, 51, 107);
 }
 
 .levels {
@@ -60,58 +116,40 @@ h1 {
     margin: 0.5em 0.8em;
     cursor: pointer;
 }
+/* START VY SLUTAR  */
 
-.easy {
-    background-color: rgb(53, 168, 53);
+
+/* SPEL VY STARTAR  */
+.window {
+    margin: 2.7em 10em;
+    background-color: #fffefe;
+    border-radius: 0.5em;
+    box-shadow: 0px 0px 20px #2a2a2a;
+    height: 90vh;
+    display: none;
 }
 
-.normal {
-    background-color: rgb(226, 226, 32);
-}
-
-.hard {
-    background-color: rgb(208, 58, 58);
+.flex-container {
+    padding: 2em 2em 0.5em 2em;
+    text-align: center;
 }
 
 #restart-btn {
     width: 5.5em;
     background-color: rgb(97, 175, 186);
 }
-.easy[data-pressed],
-.easy:active,
-.normal[data-pressed],
-.normal:active,
-.hard[data-pressed],
-.hard:active,
-.game-starter[data-pressed],
-.game-starter:active {
-    color: #aaa;
-    position: relative;
-    top: 0.1em;
-    box-shadow: 0 0 0 0.05em black;
+
+#restart-btn:hover {
+    background-color: rgb(3, 78, 88);
 }
 
-.easy[data-pressed],
-.easy:active {
-    background: rgb(6, 107, 6);
+#score-view {
+    width: 5.5em;
 }
 
-.normal[data-pressed],
-.normal:active {
-    background: rgb(109, 115, 3);
+#score-view:hover {
+    background-color: rgb(217, 221, 223);
 }
-
-.hard[data-pressed],
-.hard:active {
-    background: rgb(112, 3, 3);
-}
-
-.game-starter[data-pressed],
-.game-starter:active {
-    background: rgb(75, 58, 128);
-}
-
-/* KEYBOARD START */
 
 .keyboard {
     display: flex;
@@ -139,7 +177,6 @@ h1 {
     height: 100%;
     box-sizing: border-box;
     cursor: pointer;
-    /* Gör att det ej går att markera element (chrome, safari) */
     user-select: none;
     border: 1px solid #444;
     box-shadow: 0 0.2em 0 0.05em #222;
@@ -160,9 +197,6 @@ h1 {
     line-height: 2.8em;
 }
 
-/* KEYBOARD END */
-
-/* GAME-SECTION START */
 .game-section {
     display: flex;
     justify-content: space-evenly;
@@ -196,68 +230,10 @@ h1 {
     top: 0.2em;
     box-shadow: 0 0 0 0.05em black;
 }
-/* GAME-SECTION END */
+/* SPEL VY SLUTAR  */
 
-/* STARTVY START */
 
-body::-webkit-scrollbar {
-    width: 0.3em;
-}
-
-body::-webkit-scrollbar-thumb {
-    background-color: transparent;
-}
-.overlay {
-    background: rgb(97, 175, 186);
-    position: fixed;
-    /* top: 0;
-    left: 0; */
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.start-container {
-    width: 90%;
-    max-width: 500px;
-    background: #fefdfd;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 8px 9px rgb(54, 119, 125);
-    text-align: center;
-    overflow: hidden;
-}
-
-.start-view p {
-    font-size: 1.2em;
-    margin-bottom: 20px;
-}
-
-.levels button:hover {
-    background-color: rgb(47, 36, 111);
-}
-.easy:hover,
-.normal:hover,
-.hard:hover {
-    color: #ebe5e5;
-}
-
-.levels button.selected {
-    background-color: #2e2f30;
-    color: white;
-    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
-}
-
-.name-input.invalid {
-    border: 2px solid red;
-}
-
-/* STARTVY END */
-
-/* GAME OVER VY STARTAR */
-
+/* GAME OVER VY BÖRJAR  */
 #game-over {
     display: none;
 }
@@ -300,27 +276,27 @@ body::-webkit-scrollbar-thumb {
     cursor: pointer;
 }
 
+.btn-container > *:hover {
+    background-color: rgb(3, 78, 88);
+}
+
 .emojis {
     display: flex;
     justify-content: center;
     font-size: 10em;
     text-shadow: 0 0 15px black;
 }
+/* GAME OVER VY SLUTAR  */
 
-/* GAME OVER VY SLUTAR */
 
-/* POÄNG VY START */
+/* POÄNG VY BÖRJAR  */
 #score {
     display: none;
 }
 
-#score-view {
-    width: 5.5em;
-}
-
 .score-container {
     margin: 3em auto;
-    /* background-color: #fffefe; */
+    background-color: #fffefe;
     background-image: url("https://img.freepik.com/free-vector/blank-white-notepaper-design_53876-118304.jpg?w=740&t=st=1701353728~exp=1701354328~hmac=f43b3b75e91667e3dde83a7fb3fd6cfe09b2c824798f23876ee2debfe8c54476");
     background-size: cover;
     background-size: contain;
@@ -346,8 +322,8 @@ body::-webkit-scrollbar-thumb {
 
 .score-item > p {
     font-size: 1.2em;
-    /* font-weight: bold; */
 }
+
 .score-item > p:first-child {
     font-size: 1.4em;
     font-weight: bold;
@@ -426,25 +402,10 @@ body::-webkit-scrollbar-thumb {
     cursor: pointer;
     background-color: #a4525294;
 }
+/* POÄNG VY SLUTAR  */
 
-/* POÄNGVY END  */
 
-/* MEDIA QUERYS START */
-
-@media (max-width: 768px) {
-    .start-container {
-        width: 90%;
-    }
-}
-
-@media (max-width: 768px) {
-    .score-container {
-        padding: 1em;
-    }
-}
-.display-score > * {
-    font-size: 14px;
-}
+/* MEDIA QUERYS BÖRJAR */
 @media (max-width: 1400px) {
     .keyboard {
         font-size: 0.8em;
@@ -455,6 +416,7 @@ body::-webkit-scrollbar-thumb {
     .game-section {
         flex-direction: column;
         align-items: center;
+        height: fit-content;
     }
 
     .space-evenly {
@@ -477,7 +439,7 @@ body::-webkit-scrollbar-thumb {
         font-size: 1.5em;
     }
     .letters {
-        margin-top: 0.5em;
+        margin: 0.5em 0 1em 0;
         font-size: 1.5em;
     }
 }
@@ -524,6 +486,14 @@ body::-webkit-scrollbar-thumb {
     .btn-container > * {
         font-size: 1em;
     }
+
+    .start-container {
+        width: 90%;
+    }
+
+    .score-container {
+        padding: 1em;
+    }
 }
 
 @media (max-width: 592px) {
@@ -542,6 +512,7 @@ body::-webkit-scrollbar-thumb {
     #name {
         font-size: 1em;
     }
+    
 }
 
 @media (max-width: 500px) {
@@ -554,7 +525,7 @@ body::-webkit-scrollbar-thumb {
     }
 
     .letters {
-        font-size: 1.4em;
+        font-size: 1.3em;
         margin-top: 3em;
     }
 
