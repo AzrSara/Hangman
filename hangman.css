@@ -297,7 +297,7 @@ h1 {
 .score-container {
     margin: 3em auto;
     background-color: #fffefe;
-    background-image: url("https://img.freepik.com/free-vector/blank-white-notepaper-design_53876-118304.jpg?w=740&t=st=1701353728~exp=1701354328~hmac=f43b3b75e91667e3dde83a7fb3fd6cfe09b2c824798f23876ee2debfe8c54476");
+    /* background-image: url("https://img.freepik.com/free-vector/blank-white-notepaper-design_53876-118304.jpg?w=740&t=st=1701353728~exp=1701354328~hmac=f43b3b75e91667e3dde83a7fb3fd6cfe09b2c824798f23876ee2debfe8c54476"); */
     background-size: cover;
     background-size: contain;
     opacity: 0.95;
@@ -316,6 +316,13 @@ h1 {
     font-family: "Pixelify Sans", sans-serif;
 }
 
+.score-item {
+    /* border-bottom: 2px dotted black; */
+    box-shadow: 1px 1px 5px rgb(82, 82, 82);
+    padding: 1em;
+    border-radius: 0.4em;    
+}
+
 .score-item > * {
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
@@ -332,7 +339,6 @@ h1 {
 
 .score-item > p:nth-child(5) {
     font-weight: bold;
-    margin-bottom: 20px;
 }
 
 .score-item > p:nth-child(2) {
