@@ -65,11 +65,6 @@ h1 {
     background-color: rgb(90, 11, 11);
 }
 
-input {
-    background-color: #ebe5e5;
-    color: #222;
-}
-
 .easy:hover,
 .normal:hover,
 .hard:hover,
@@ -96,12 +91,14 @@ input {
     padding: 0.4em;
     font-size: 0.8em;
     color: #222;
-    box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+    /* box-shadow: 0px 0px 2px black; */
     /* border: 1px solid black; */
 }
 
 .name-input {
     width: 9.5em;
+    background-color: #f3eded;
+    color: #222;
 }
 
 .game-starter {
