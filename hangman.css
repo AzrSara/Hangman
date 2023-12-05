@@ -399,6 +399,7 @@ h1 {
     cursor: pointer;
     transition: all 0.3s ease;
     background-color: rgb(123, 200, 180);
+    color: #222;
 }
 
 #score .button1:hover {
