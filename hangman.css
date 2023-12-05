@@ -64,6 +64,12 @@ h1 {
 .hard:hover {
     background-color: rgb(90, 11, 11);
 }
+
+input {
+    background-color: #ebe5e5;
+    color: #222;
+}
+
 .easy:hover,
 .normal:hover,
 .hard:hover,
