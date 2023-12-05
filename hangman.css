@@ -96,8 +96,8 @@ input {
     padding: 0.4em;
     font-size: 0.8em;
     color: #222;
-    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
-    
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+    /* border: 1px solid black; */
 }
 
 .name-input {
